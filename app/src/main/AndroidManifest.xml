@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_English_App"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/ChooseMode" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
