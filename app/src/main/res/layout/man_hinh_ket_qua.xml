@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:drawable/btn_star_big_on"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TxtChuDe"
+            android:layout_width="355dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="20dp"
+            android:text="Congratulation to you!!"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TxtTen"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TxtChuDe"
+            android:layout_marginTop="40dp"
+            android:text="Tên:"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TxtCauDung"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TxtTen"
+            android:layout_marginTop="39dp"
+            android:text="Số câu đúng:"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TxtDiem"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TxtCauDung"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-32dp"
+            android:layout_marginEnd="71dp"
+            android:text="Điểm:"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/BtnLamLai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TxtDiem"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="58dp"
+            android:layout_marginTop="168dp"
+            android:background="#0000EE"
+            android:padding="10dp"
+            android:text="Làm lại"
+            android:textAllCaps="false"
+            android:textColor="@color/design_default_color_secondary"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/BtnTroLai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/TxtDiem"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="237dp"
+            android:layout_marginTop="169dp"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:text="Trở lại"
+            android:textAllCaps="false"
+            android:textColor="@color/teal_200"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
