@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F4FDF4"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ravenpro_medium"
+        android:text="WELCOME TO"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textColor="#6ADF31"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="50dp"/>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_below="@id/textView1"
+        android:text="LEARNING ENGLISH"
+        android:textSize="30dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:fontFamily="@font/ravenpro_medium"
+        android:textColor="#6ADF31"
+        android:textStyle="bold"
+        />
+    </RelativeLayout>
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@drawable/eng_logo_home"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:id="@+id/chooseTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="20dp"
+        android:text="Choose Mode"
+        android:fontFamily="@font/ravenpro_bold"
+        android:textSize="36dp"
+        android:layout_marginLeft="30dp"
+        android:layout_gravity="center"
+        android:textColor="#29BF12"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_Quiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_eng_quiz" />
+        <Button
+            android:id="@+id/btn_Correc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_Quiz"
+            android:background="@drawable/btn_eng_correc"
+            android:layout_marginLeft="20dp"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>
