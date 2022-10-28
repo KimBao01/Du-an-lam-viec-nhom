@@ -7,13 +7,13 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textViewQuiz"
+        android:id="@+id/textViewCorrect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/ravenpro_medium"
-        android:text="ENGLISH QUIZ"
+        android:text="CORRECT WORD"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textColor="#6ADF31"
         android:textSize="36sp"
@@ -22,20 +22,20 @@
 
     <ImageView
         android:id="@+id/imgView"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        tools:srcCompat="@drawable/eng_logo_quiz"/>
+        tools:srcCompat="@drawable/eng_logo_correct_word"/>
     <RelativeLayout
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_marginTop="40dp">
 
         <Button
-            android:id="@+id/btn_QuizStart"
+            android:id="@+id/btn_CorrectStart"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
@@ -49,10 +49,10 @@
             android:textSize="26dp" />
 
         <Button
-            android:id="@+id/btn_QuizHighSco"
+            android:id="@+id/btn_CorrectHighSco"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/btn_QuizStart"
+            android:layout_below="@+id/btn_CorrectStart"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
@@ -64,10 +64,10 @@
             android:textSize="26dp" />
 
         <Button
-            android:id="@+id/btn_QuizInstruc"
+            android:id="@+id/btn_CorrectInstruc"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@+id/btn_QuizHighSco"
+            android:layout_below="@+id/btn_CorrectHighSco"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
@@ -79,12 +79,12 @@
             android:textSize="26dp" />
 
         <Button
-            android:id="@+id/btn_QuizBack_HomeMenu"
+            android:id="@+id/btn_CorrectBack_HomeMenu"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/btn_QuizInstruc"
+            android:layout_below="@+id/btn_CorrectInstruc"
             android:layout_centerInParent="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/btn_green_radius_100"
             android:text="Back"
             android:textAllCaps="false"

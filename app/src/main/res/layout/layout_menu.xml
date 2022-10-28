@@ -7,41 +7,58 @@
     android:background="#F4FDF4"
     android:orientation="vertical">
 
-
-    <RelativeLayout
-        android:layout_marginTop="70dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/textView1"
+    <LinearLayout
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/ravenpro_medium"
-        android:text="WELCOME TO"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textColor="#6ADF31"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="50dp"/>
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:layout_below="@id/textView1"
-        android:text="LEARNING ENGLISH"
-        android:textSize="30dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:fontFamily="@font/ravenpro_medium"
-        android:textColor="#6ADF31"
-        android:textStyle="bold"
-        />
-    </RelativeLayout>
+        android:layout_gravity="center">
+        <Button
+            android:gravity="right"
+            android:id="@+id/btn_logout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/logout_icon"/>
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginTop="35dp"
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ravenpro_medium"
+                android:text="WELCOME TO"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textColor="#6ADF31"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="40dp"/>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView1"
+                android:text="LEARNING ENGLISH"
+                android:textSize="30dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:fontFamily="@font/ravenpro_medium"
+                android:textColor="#6ADF31"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
     <ImageView
         android:layout_marginTop="20dp"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/eng_logo_home"
         android:layout_gravity="center"
         />
@@ -50,11 +67,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="20dp"
         android:text="Choose Mode"
         android:fontFamily="@font/ravenpro_bold"
-        android:textSize="36dp"
+        android:textSize="30dp"
         android:layout_marginLeft="30dp"
         android:layout_gravity="center"
         android:textColor="#29BF12"/>
@@ -63,18 +80,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:gravity="center">
         <Button
             android:id="@+id/btn_Quiz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_eng_quiz" />
+            android:background="@drawable/btn_eng_quiz_menu" />
         <Button
-            android:id="@+id/btn_Correc"
+            android:id="@+id/btn_Correct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/btn_Quiz"
-            android:background="@drawable/btn_eng_correc"
+            android:background="@drawable/btn_eng_correct_menu"
             android:layout_marginLeft="20dp"/>
     </RelativeLayout>
 

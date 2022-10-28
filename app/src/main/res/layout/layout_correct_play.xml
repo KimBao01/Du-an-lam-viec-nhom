@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_Correct_goBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/go_back_icon"/>
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_radius_5"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/img_startIcon"
+                    android:layout_width="35dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/start_icon"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:30"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:id="@+id/textTimer"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="r/e/h/m/o/t"
+            android:gravity="center"
+            android:textColor="#14CC60"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:background="@drawable/bg_green_shadow_question"/>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mother"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:background="@drawable/bg_blue_shadow_answer"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp">
+
+        <Button
+            android:id="@+id/btn_Start"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_green_radius_100"
+            android:text="Answer"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:textSize="26dp"/>
+
+        <Button
+            android:layout_marginLeft="20dp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_green_radius_100"
+            android:text="Skip"
+            android:textColor="#ffffff"
+            android:textAllCaps="false"
+            android:textSize="26dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correct sentence: 0"
+            android:layout_gravity="center"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</LinearLayout>
