@@ -61,7 +61,7 @@ public class Activity_correct_instruction extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                Toast.makeText(Activity_correct_instruction.this, "Dialog Close", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_correct_instruction.this, "Closed!", Toast.LENGTH_SHORT).show();
             }
         });
         dialog.show();

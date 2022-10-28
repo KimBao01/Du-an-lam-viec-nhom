@@ -11,7 +11,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/ravenpro_medium"
-        android:text="INTRUCTION"
+        android:text="INSTRUCTIONS"
         android:textColor="#29BF12"
         android:textSize="34sp"
         android:textStyle="bold" />
