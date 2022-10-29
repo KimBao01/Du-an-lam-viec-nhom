@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+
 public class MainActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 2500;
