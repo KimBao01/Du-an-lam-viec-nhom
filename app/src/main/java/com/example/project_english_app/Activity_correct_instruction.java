@@ -66,6 +66,4 @@ public class Activity_correct_instruction extends AppCompatActivity {
         });
         dialog.show();
     }
-
-
 }

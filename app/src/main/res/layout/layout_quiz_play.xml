@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mix_color_background"
     android:orientation="vertical"
     tools:context=".Activity_quiz_home">
 
@@ -10,19 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_Quiz_goBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/go_back_icon" />
 
 
         <TextView
+            android:layout_marginTop="15dp"
             android:layout_width="260dp"
-            android:layout_height="70dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:background="@drawable/bg_green_shadow_question"
             android:gravity="center"
@@ -33,15 +35,15 @@
         <ImageView
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
             android:src="@drawable/drill"/>
 
         <RadioGroup
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:id="@+id/radioGroup"
-            android:layout_width="230dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true">
@@ -91,10 +93,10 @@
         </RadioGroup>
 
         <Button
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:layout_width="130dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:background="@drawable/btn_green_radius_100"
             android:text="Answer"
             android:textColor="#ffffff"
@@ -111,13 +113,13 @@
             <Button
                 android:layout_marginStart="20dp"
                 android:id="@+id/btn_hint"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:background="@drawable/hint_icon"/>
 
             <Button
                 android:layout_width="100dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="120dp"
                 android:background="@drawable/btn_green_radius_100"
                 android:text="Skip"

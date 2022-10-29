@@ -26,7 +26,8 @@ public class Activity_quiz_home extends AppCompatActivity {
         });
 
         btnQzInstuc = (Button) findViewById(R.id.btn_QuizInstruc);
-        btnQzInstuc.setOnClickListener(new View.OnClickListener() {
+        btnQzInstuc.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 openActivity_quiz_intruction();
@@ -43,12 +44,14 @@ public class Activity_quiz_home extends AppCompatActivity {
 
     }
 
-    public void openActivity_quiz_play() {
+    public void openActivity_quiz_play()
+    {
         Intent intent = new Intent(this, Activity_quiz_play.class);
         startActivity(intent);
     }
 
-    public void openActivity_quiz_intruction() {
+    public void openActivity_quiz_intruction()
+    {
         Intent intent = new Intent(this, Activity_quiz_instruction.class);
         startActivity(intent);
     }
@@ -57,5 +60,4 @@ public class Activity_quiz_home extends AppCompatActivity {
         Intent intent = new Intent(this, Activity_menu.class);
         startActivity(intent);
     }
-
 }

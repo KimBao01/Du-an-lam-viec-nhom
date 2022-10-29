@@ -32,9 +32,9 @@
 
         <ImageView
             android:id="@+id/img_correctInstruction"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_width="wrap_content"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             android:layout_gravity="center"
             android:src="@drawable/eng_correct_instruction"/>
 

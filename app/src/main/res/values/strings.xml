@@ -6,11 +6,14 @@
     </string>
     <string name="ask_account">Create an account.</string>
 
-    <string name="rule_start">o Đầu tiên xuất hiện 1 từ ở mức trung bình, nếu trả lời đúng sẽ xuất hiện từ khó hơn và tăng dần. Đúng liên tiếp 3 từ thì được nhận 1 ngôi sao.
+    <string name="rule_start">
+        + Đầu tiên xuất hiện 1 từ ở mức trung bình, nếu trả lời đúng sẽ xuất hiện từ khó hơn và tăng dần. Đúng liên tiếp 3 từ thì được nhận 1 ngôi sao.
+\n
+    \n+ Khi trả lời sai thì xuất hiện từ kế tiếp dễ hơn, nếu sai 3 lần liên tiếp thì sẽ mất 1 ngôi sao nếu trước đó đã có ngôi sao.
+\n
+\n+ Nếu không có ngôi sao nào mà trả lời sai 3 lần liên tiếp sẽ tự động kết thúc.
 
-o Khi trả lời sai thì xuất hiện từ kế tiếp dễ hơn, nếu sai 3 lần liên tiếp thì sẽ mất 1 ngôi sao nếu trước đó đã có ngôi sao.
 
-o Nếu không có ngôi sao nào mà trả lời sai 3 lần liên tiếp sẽ tự động kết thúc.
 
 
     </string>

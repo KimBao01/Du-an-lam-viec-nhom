@@ -17,14 +17,13 @@
         android:textStyle="bold" />
 
 
-
     <ImageView
         android:id="@+id/img_correctInstruction"
-        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"
+        android:layout_height="500dp"
         android:layout_gravity="center"
-        android:src="@drawable/eng_quiz_instruction"/>
+        android:layout_marginTop="10dp"
+        android:src="@drawable/eng_quiz_instruction" />
 
     <Button
         android:id="@+id/btn_QuizBack_Instruc"
