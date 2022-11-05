@@ -2,11 +2,14 @@ package com.example.project_english_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,10 +19,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LogIn  extends AppCompatActivity {
-    private Button btn;
+    FirebaseAuth firebase_Auth;
+    Button btn_Login;
+    EditText Edt_Email,Edt_Pass;
     SignInButton signin;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 0;
@@ -30,14 +38,29 @@ public class LogIn  extends AppCompatActivity {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        btn = (Button) findViewById(R.id.btn_login);
-        btn.setOnClickListener(new View.OnClickListener() {
+        AnhXa();
+        btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openActivity_menu();
+                String email = Edt_Email.getText().toString();
+                String pass = Edt_Pass.getText().toString();
+                firebase_Auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isComplete())
+                        {
+                            Toast.makeText(LogIn.this,"Login success",Toast.LENGTH_LONG).show();
+                            openActivity_menu();
+                        }
+                        else
+                        {
+                            Toast.makeText(LogIn.this,"Login failed",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
         });
-        signin = findViewById(R.id.sign_in_button);
+
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +72,7 @@ public class LogIn  extends AppCompatActivity {
                 }
             }
         });
+
     }
     public void openActivity_menu() {
         Intent intent = new Intent(this, Activity_menu.class);
@@ -84,5 +108,10 @@ public class LogIn  extends AppCompatActivity {
             Log.w("error", "signInResult:failed code=" + e.getStatusCode());
 
         }
+    }
+    public void AnhXa()
+    {
+        btn_Login = (Button) findViewById(R.id.btn_login);
+        signin = findViewById(R.id.sign_in_button);
     }
 }
