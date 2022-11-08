@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +31,7 @@ public class Activity_LogIn extends AppCompatActivity {
     FirebaseAuth firebase_Auth;
     Button btn_Login;
     EditText Edt_Email,Edt_Pass;
-    SignInButton signin;
+    Button signinRes;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 0;
     @Override
@@ -39,39 +42,65 @@ public class Activity_LogIn extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         AnhXa();
+        firebase_Auth = FirebaseAuth.getInstance();
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = Edt_Email.getText().toString();
-                String pass = Edt_Pass.getText().toString();
-                firebase_Auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(Activity_LogIn.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isComplete())
-                        {
-                            Toast.makeText(Activity_LogIn.this,"Login success",Toast.LENGTH_LONG).show();
-                            openActivity_menu();
-                        }
-                        else
-                        {
-                            Toast.makeText(Activity_LogIn.this,"Login failed",Toast.LENGTH_LONG).show();
-                        }
+                String email = Edt_Email.getText().toString().trim();
+                String pass = Edt_Pass.getText().toString().trim();
+                if(email.isEmpty())
+                {
+                    Edt_Email.setError("Email cannot be empty");
+                }
+                if(pass.isEmpty())
+                {
+                    Edt_Pass.setError("Password cannot be empty ");
+                }
+                else if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                {
+                    if(!pass.isEmpty())
+                    {
+                        firebase_Auth.signInWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                Toast.makeText(Activity_LogIn.this,"Login Successful",Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(Activity_LogIn.this,Activity_menu.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Activity_LogIn.this,"Login Failed",Toast.LENGTH_LONG);
+
+                            }
+                        });
                     }
-                });
+                }
+
             }
         });
 
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.loginButton:
-                        signIn();
-                        break;
-                    // ...
-                }
-            }
-        });
+    signinRes.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Activity_LogIn.this,Activity_Register.class);
+            startActivity(intent);
+            finish();
+
+        }
+    });
+//        signin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                switch (view.getId()) {
+//                    case R.id.loginButton:
+//                        signIn();
+//                        break;
+//                    // ...
+//                }
+//            }
+//        });
 
     }
     public void openActivity_menu() {
@@ -112,7 +141,9 @@ public class Activity_LogIn extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
     public void AnhXa()
     {
+        Edt_Email = (EditText) findViewById(R.id.LogEmail);
+        Edt_Pass = (EditText)findViewById(R.id.LogPass);
         btn_Login = (Button) findViewById(R.id.loginButton);
-        signin = findViewById(R.id.registerPage);
+        signinRes = (Button)findViewById(R.id.registerPage);
     }
 }

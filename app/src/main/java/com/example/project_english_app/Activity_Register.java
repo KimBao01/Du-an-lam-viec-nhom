@@ -22,52 +22,64 @@ public class Activity_Register extends AppCompatActivity {
     private Button btnLogin;
     FirebaseAuth firebase_Auth;
     EditText Res_Email,Res_Pass;
-    Button Btn_Res;
+    Button Btn_Res,Btn_Login;
     String asd;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        firebase_Auth =FirebaseAuth.getInstance();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_register);
-
+        firebase_Auth =FirebaseAuth.getInstance();
         btnLogin = (Button) findViewById(R.id.loginButton_home);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openActivity_LogIn();
-            }
-        });
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openActivity_LogIn();
+//            }
+//        });
 
         AnhXa();
         Btn_Res.setOnClickListener(new View.OnClickListener() {
-            String email = Res_Email.getText().toString();
-            String pass = Res_Pass.getText().toString();
             @Override
             public void onClick(View view) {
-                firebase_Auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(Activity_Register.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isComplete()) {
-                            Toast.makeText(Activity_Register.this,"Register success !",Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(Activity_Register.this, Activity_LogIn.class);
-                            startActivity(intent);
-                            finish();
+                String email = Res_Email.getText().toString().trim();
+                String pass = Res_Pass.getText().toString().trim();
+                if(email.isEmpty())
+                {
+                    Res_Email.setError("Email cannot be empty");
+                }
+                if(pass.isEmpty())
+                {
+                    Res_Pass.setError("Password cannot be empty ");
+                }
+                else
+                {
+                    firebase_Auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(Activity_Register.this ,new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(Activity_Register.this,"Signup Successfull",Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(Activity_Register.this,Activity_LogIn.class);
+                                startActivity(intent);
+                            }
+                            else
+                            {
+                                Toast.makeText(Activity_Register.this,"Signup Failed "+task.getException(),Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
+                }
 
-                        }
-                        else
-                        {
-                            if(TextUtils.isEmpty(email) || !email.contains("@") )
-                            {
-                                Toast.makeText(Activity_Register.this,"Email is not valid",Toast.LENGTH_LONG).show();
-                            }
-                            if(TextUtils.isEmpty(pass) || pass.length()<6)
-                            {
-                                Toast.makeText(Activity_Register.this,"Password is not valid",Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-                });
+            }
+        });
+        Btn_Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_Register.this,Activity_LogIn.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -76,7 +88,7 @@ public class Activity_Register extends AppCompatActivity {
         Res_Email = (EditText) findViewById(R.id.emailRegis);//trong'
         Res_Pass = (EditText) findViewById(R.id.passwordRegis);//trong'
         Btn_Res = (Button)findViewById(R.id.registerButton);//trong'
-
+        Btn_Login = (Button) findViewById(R.id.loginButton);
     }
 
     public void openActivity_LogIn() {
