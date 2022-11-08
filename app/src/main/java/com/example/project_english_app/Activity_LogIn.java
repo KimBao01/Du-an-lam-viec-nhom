@@ -1,8 +1,8 @@
 package com.example.project_english_app;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +24,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LogIn  extends AppCompatActivity {
+public class Activity_LogIn extends AppCompatActivity {
     FirebaseAuth firebase_Auth;
     Button btn_Login;
     EditText Edt_Email,Edt_Pass;
@@ -44,17 +44,17 @@ public class LogIn  extends AppCompatActivity {
             public void onClick(View view) {
                 String email = Edt_Email.getText().toString();
                 String pass = Edt_Pass.getText().toString();
-                firebase_Auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(LogIn.this, new OnCompleteListener<AuthResult>() {
+                firebase_Auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(Activity_LogIn.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isComplete())
                         {
-                            Toast.makeText(LogIn.this,"Login success",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Activity_LogIn.this,"Login success",Toast.LENGTH_LONG).show();
                             openActivity_menu();
                         }
                         else
                         {
-                            Toast.makeText(LogIn.this,"Login failed",Toast.LENGTH_LONG).show();
+                            Toast.makeText(Activity_LogIn.this,"Login failed",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -65,7 +65,7 @@ public class LogIn  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.sign_in_button:
+                    case R.id.loginButton:
                         signIn();
                         break;
                     // ...
@@ -90,7 +90,7 @@ public class LogIn  extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
-            Toast.makeText(LogIn.this,"resetquestcode "+requestCode,Toast.LENGTH_LONG).show();
+            Toast.makeText(Activity_LogIn.this,"resetquestcode "+requestCode,Toast.LENGTH_LONG).show();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -99,8 +99,8 @@ public class LogIn  extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
-            Toast.makeText(LogIn.this,"asd",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(LogIn.this,Second.class);
+            Toast.makeText(Activity_LogIn.this,"asd",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Activity_LogIn.this,Second.class);
             startActivity(intent);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -109,9 +109,10 @@ public class LogIn  extends AppCompatActivity {
 
         }
     }
+    @SuppressLint("WrongViewCast")
     public void AnhXa()
     {
-        btn_Login = (Button) findViewById(R.id.btn_login);
-        signin = findViewById(R.id.sign_in_button);
+        btn_Login = (Button) findViewById(R.id.loginButton);
+        signin = findViewById(R.id.registerPage);
     }
 }

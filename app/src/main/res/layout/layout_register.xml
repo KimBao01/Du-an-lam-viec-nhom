@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/logoregister"
     android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".Activity_LogIn">
+    android:orientation="vertical">
+
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -28,27 +28,27 @@
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Login"
+                android:text="Register"
                 android:textAlignment="center"
                 android:textColor="#14CC60"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/emailRegis"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/ic_person"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="Email"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/passwordRegis"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
@@ -61,29 +61,17 @@
                 android:textColorHighlight="@color/cardview_dark_background" />
 
             <Button
-                android:id="@+id/loginButton"
+                android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/bg_gradient_button_login"
-                android:text="Log In"
+                android:text="Register"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:background="@null"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:textAllCaps="false"
-        android:text="Not yet registered? SignUp Now"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:id="@+id/registerPage"
-        android:textColor="#29BF12"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,10 +81,16 @@
         android:textStyle="italic"
         android:textAlignment="center"
         android:textColor="#888787"/>
+
     <Button
-        android:id="@+id/signInGG"
-        android:layout_width="250dp"
+        android:id="@+id/loginButton"
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:background="@drawable/signin_gg"/>
+        android:background="@drawable/custom_edittext"
+        android:text="Login"
+        android:textColor="#6ADF30"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
 
 </LinearLayout>

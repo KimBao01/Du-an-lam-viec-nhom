@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 public class Activity_menu extends AppCompatActivity {
     private Button btnQuiz, btnCorrect, btnLogout;
@@ -46,7 +45,7 @@ public class Activity_menu extends AppCompatActivity {
     }
 
     public void gobackLogIn() {
-        Intent intent = new Intent(this, LogIn.class);
+        Intent intent = new Intent(this, Activity_LogIn.class);
         startActivity(intent);
     }
 
