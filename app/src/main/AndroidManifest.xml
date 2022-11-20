@@ -86,6 +86,7 @@
         <activity android:name=".Activity_LogIn" />
         <activity android:name=".Second" />
         <activity android:name=".Activity_Register" />
+        <activity android:name=".TagLayout_Answer" />
     </application>
 
 </manifest>

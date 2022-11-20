@@ -72,7 +72,6 @@ public class Activity_LogIn extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(Activity_LogIn.this,"Login Failed",Toast.LENGTH_LONG);
-
                             }
                         });
                     }

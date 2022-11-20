@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Questionare>
+    <Item>
+        <Question>A P M </Question>
+        <Answer>MAP</Answer>
+        <Hint>Bản đồ</Hint>
+    </Item>
+    <Item>
+        <Question>K O R W</Question>
+        <Answer>WORK</Answer>
+        <Hint>Công việc, hoạt động</Hint>
+    </Item>
+    <Item>
+        <Question>L F M I</Question>
+        <Answer>FILM</Answer>
+        <Hint>Phim ảnh, quay phim</Hint>
+    </Item>
+    <Item>
+        <Question>L P I P U</Question>
+        <Answer>PUPIL</Answer>
+        <Hint>Học sinh</Hint>
+    </Item>
+    <Item>
+        <Question>I W S M</Question>
+        <Answer>SWIM</Answer>
+        <Hint>Bơi</Hint>
+    </Item>
+    <Item>
+        <Question>E L I F</Question>
+        <Answer>LIFE</Answer>
+        <Hint>Đời sống</Hint>
+    </Item>
+    <Item>
+        <Question>M F O R</Question>
+        <Answer>FORM</Answer>
+        <Hint>Hình thức</Hint>
+    </Item>
+    <Item>
+        <Question>H R W O T</Question>
+        <Answer>THROW</Answer>
+        <Hint>Quăng, ném</Hint>
+    </Item>
+    <Item>
+        <Question>A C K L </Question>
+        <Answer>LACK</Answer>
+        <Hint>Thiếu hụt</Hint>
+    </Item>
+    <Item>
+        <Question>S M U C I</Question>
+        <Answer>MUSIC</Answer>
+        <Hint>Nhạc</Hint>
+    </Item>
+
+</Questionare>

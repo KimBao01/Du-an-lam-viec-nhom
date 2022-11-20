@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Questionare>
+    <Item>
+        <Question>S R D E S</Question>
+        <Answer>DRESS</Answer>
+        <Hint>Váy liền</Hint>
+    </Item>
+    <Item>
+        <Question>T Y D U</Question>
+        <Answer>DUTY</Answer>
+        <Hint>Trách nhiệm, nhiệm vụ</Hint>
+    </Item>
+    <Item>
+        <Question>T E A R H</Question>
+        <Answer>EARTH</Answer>
+        <Hint>Trái đất</Hint>
+    </Item>
+    <Item>
+        <Question>S E A T</Question>
+        <Answer>EAST</Answer>
+        <Hint>Phía đông</Hint>
+    </Item>
+    <Item>
+        <Question>C T A O I N D E U</Question>
+        <Answer>EDUCATION</Answer>
+        <Hint>Giáo dục</Hint>
+    </Item>
+    <Item>
+        <Question>F E E C F T</Question>
+        <Answer>EFFECT</Answer>
+        <Hint>Tác động</Hint>
+    </Item>
+    <Item>
+        <Question>E P E L H A N T </Question>
+        <Answer>ELEPHANT</Answer>
+        <Hint>Voi</Hint>
+    </Item>
+    <Item>
+        <Question>T Y P E M</Question>
+        <Answer>EMPTY</Answer>
+        <Hint>Trống rỗng</Hint>
+    </Item>
+    <Item>
+        <Question>E Y N M E</Question>
+        <Answer>ENEMY</Answer>
+        <Hint>Kẻ thù</Hint>
+    </Item>
+    <Item>
+        <Question>Q L A U E</Question>
+        <Answer>EQUAL</Answer>
+        <Hint>Bằng nhau, bình đẳng</Hint>
+    </Item>
+
+</Questionare>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Questionare>
+    <Item>
+        <Question>T A T A R I E V T C</Question>
+        <Answer>ATTRACTIVE</Answer>
+        <Hint>Quyến rũ, hấp dẫn</Hint>
+    </Item>
+    <Item>
+        <Question>S E A R E R</Question>
+        <Answer>ERASER</Answer>
+        <Hint>Cục tẩy</Hint>
+    </Item>
+    <Item>
+        <Question>A O B R D</Question>
+        <Answer>BOARD</Answer>
+        <Hint>Bảng viết</Hint>
+    </Item>
+    <Item>
+        <Question>K S A C</Question>
+        <Answer>SACK</Answer>
+        <Hint>Bị đuổi đi</Hint>
+    </Item>
+    <Item>
+        <Question>H I E L C S E V</Question>
+        <Answer>VEHICLES</Answer>
+        <Hint>Phương tiện</Hint>
+    </Item>
+    <Item>
+        <Question>W W O N T N D O</Question>
+        <Answer>DOWNTOWN</Answer>
+        <Hint>Trung tâm thành phố</Hint>
+    </Item>
+    <Item>
+        <Question>P I M D M E N T I E</Question>
+        <Answer>IMPEDIMENT</Answer>
+        <Hint>vật cản, sự cản trở</Hint>
+    </Item>
+    <Item>
+        <Question>P N T S O E O P</Question>
+        <Answer>POSTPONE</Answer>
+        <Hint>Trì hoãn</Hint>
+    </Item>
+    <Item>
+        <Question>G U R S</Question>
+        <Answer>RUGS</Answer>
+        <Hint>Thảm</Hint>
+    </Item>
+    <Item>
+        <Question>X E B I T H I</Question>
+        <Answer>EXHIBIT</Answer>
+        <Hint>triển lãm, trưng bày</Hint>
+    </Item>
+
+</Questionare>
