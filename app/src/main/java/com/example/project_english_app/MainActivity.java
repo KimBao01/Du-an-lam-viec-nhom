@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         bottom = AnimationUtils.loadAnimation(this, R.anim.bottom);
 
         imageView.setAnimation(top);
-        imageView.setAnimation(bottom);
+        textView1.setAnimation(bottom);
 
          new Handler().postDelayed(new Runnable() {
              @Override

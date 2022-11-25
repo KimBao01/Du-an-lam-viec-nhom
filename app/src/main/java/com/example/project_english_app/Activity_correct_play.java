@@ -50,9 +50,9 @@ public class Activity_correct_play extends AppCompatActivity {
     ArrayList<Integer> Arr_MaintainAnswer;
     String FullChuCai = "";
     ArrayList<String>question;
-    int Level = 0, pos = 0, current, StartTimeInt = 30, Check_Maintain_Count_Star = 0, posIndex = 0, High_Star = 0,CorrectAnswer=0;
+    int Level = 0, pos = 0, current, StartTimeInt = 30, Check_Maintain_Count_Star = 0, posIndex = 0, High_Star = 0,CorrectAnswer=0,temp = 0;
     Random random = new Random();
-    boolean Frag_Easy[] = new boolean[1000], Frag_Medium[] = new boolean[1000], Frag_Hard[] = new boolean[1000], CheckAnswer = false;
+    boolean Frag_Easy[] = new boolean[1000], Frag_Medium[] = new boolean[1000], Frag_Hard[] = new boolean[1000], CheckAnswer = false,page = false;
     CountDownTimer Count_Down_Timer;
 
     @SuppressLint("MissingInflatedId")
@@ -78,19 +78,24 @@ public class Activity_correct_play extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Arr_MaintainAnswer.add(-1);
+                Log.e("Size : "+Arr_MaintainAnswer.size(),"1");
                 if (Arr_MaintainAnswer.size() > 2) {
                     Check_Maintain_Answer();
                 }
-                CheckAnswer = false;
-                Count_Down_Timer.cancel();
-                StartTimeInt = 30;
-                pos++;
-                ReadData(CheckAnswer);
-                CountDown();
-                FullChuCai = "";
-                txtAnswer.setText(FullChuCai);
-                current = Pgb.getProgress();
-                Pgb.setProgress(current + 10);
+                if(!page)
+                {
+                    CheckAnswer = false;
+                    StartTimeInt = 30;
+                    pos++;
+                    ReadData(CheckAnswer);
+                    Count_Down_Timer.cancel();
+                    CountDown();
+                    FullChuCai = "";
+                    txtAnswer.setText(FullChuCai);
+                    current = Pgb.getProgress();
+                    Pgb.setProgress(current + 10);
+                }
+
             }
         });
         btnAnswer.setOnClickListener(new View.OnClickListener() {
@@ -98,23 +103,28 @@ public class Activity_correct_play extends AppCompatActivity {
             public void onClick(View view) {
                 if (txtAnswer.getText().toString().trim().equals(L.get(pos).answer.trim())) {
                     Arr_MaintainAnswer.add(1);
+                    Log.e("Size : "+Arr_MaintainAnswer.size(),"1");
                     if (Arr_MaintainAnswer.size() > 2) {
                         Check_Maintain_Answer();
                     }
-                    CheckAnswer = true;
-                    Count_Down_Timer.cancel();
-                    StartTimeInt = 30;
-                    current = Pgb.getProgress();
-                    Pgb.setProgress(current + 10);
-                    Toast.makeText(Activity_correct_play.this, "Right answer ", Toast.LENGTH_LONG).show();
-                    FullChuCai = "";
-                    txtAnswer.setText("");
-                    pos++;
-                    ReadData(CheckAnswer);
-                    CountDown();
-                    Log.e("level " + Level, "asd");
-                    CorrectAnswer++;
-                    txtCorrectAnswer.setText("Correct answers : "+String.valueOf(CorrectAnswer));
+                    if(!page)
+                    {
+                        CheckAnswer = true;
+                        StartTimeInt = 30;
+                        current = Pgb.getProgress();
+                        Pgb.setProgress(current + 10);
+                        Toast.makeText(Activity_correct_play.this, "Right answer ", Toast.LENGTH_LONG).show();
+                        FullChuCai = "";
+                        txtAnswer.setText("");
+                        pos++;
+                        ReadData(CheckAnswer);
+                        Count_Down_Timer.cancel();
+                        CountDown();
+                        Log.e("level " + Level, "asd");
+                        CorrectAnswer++;
+                        txtCorrectAnswer.setText("Correct answers : "+String.valueOf(CorrectAnswer));
+                    }
+
 //                    pos++;
 //                    Display(pos);
                 } else {
@@ -167,17 +177,17 @@ public class Activity_correct_play extends AppCompatActivity {
         ChuCai = new ArrayList<>();
         String test="";
         String[] Split_Ques = L.get(i).question.split(" ");
-        for(int a=0;a<Split_Ques.length;a++)
-        {
-            Log.e(Split_Ques[a]+"","asd");
-        }
+//        for(int a=0;a<Split_Ques.length;a++)
+//        {
+//            Log.e(Split_Ques[a]+"","asd");
+//        }
         for(int k=0;k<Split_Ques.length;k++)
         {
             question.add(Split_Ques[k]);
         }
-        Log.e("origin "+question,"1");
+//        Log.e("origin "+question,"1");
         Collections.shuffle(question);
-        Log.e("shuffer "+question,"1");
+//        Log.e("shuffer "+question,"1");
         while(true)
         {
             for (int j = 0; j < question.size(); j++) {
@@ -189,7 +199,7 @@ public class Activity_correct_play extends AppCompatActivity {
             }
             else test = "";
         }
-        Log.e("test "+test,"1");
+//        Log.e("test "+test,"1");
 
         for (int j = 0; j < question.size(); j++) {
             ChuCai.add(new ChuCai_CorrectWord(question.get(j)));
@@ -481,9 +491,15 @@ public class Activity_correct_play extends AppCompatActivity {
 //
 //            }
         } else {
-            Intent intent = new Intent(Activity_correct_play.this, Second.class);
-            startActivity(intent);
-            finish();
+            if(page==false)
+            {
+                Log.e("5","6");
+                finish();
+                Count_Down_Timer.cancel();
+                Intent intent = new Intent(Activity_correct_play.this, Second.class);
+                startActivity(intent);
+            }
+
         }
     }
 
@@ -491,6 +507,7 @@ public class Activity_correct_play extends AppCompatActivity {
         Count_Down_Timer = new CountDownTimer(31000, 1000) {
             @Override
             public void onTick(long l) {
+                Log.e("1","2");
                 String StartTimeString = String.valueOf(StartTimeInt);
                 if (StartTimeInt >= 10) {
                     txtTimer.setText("00:" + StartTimeString);
@@ -509,14 +526,18 @@ public class Activity_correct_play extends AppCompatActivity {
                 if (Arr_MaintainAnswer.size() > 2) {
                     Check_Maintain_Answer();
                 }
-                pos++;
-                ReadData(CheckAnswer);
-                CheckAnswer = false;
-                CountDown();
-                FullChuCai = "";
-                txtAnswer.setText(FullChuCai);
-                current = Pgb.getProgress();
-                Pgb.setProgress(current + 10);
+                if(!page)
+                {
+                    pos++;
+                    ReadData(CheckAnswer);
+                    CheckAnswer = false;
+                    Count_Down_Timer.cancel();
+                    CountDown();
+                    FullChuCai = "";
+                    txtAnswer.setText(FullChuCai);
+                    current = Pgb.getProgress();
+                    Pgb.setProgress(current + 10);
+                }
             }
         }.start();
 
@@ -528,7 +549,9 @@ public class Activity_correct_play extends AppCompatActivity {
         while (posIndex < Arr_MaintainAnswer.size()) {
             Log.e("i " + posIndex, "1");
             if (Arr_MaintainAnswer.get(posIndex) != Arr_MaintainAnswer.get(posIndex + 1)) {
+                temp = Arr_MaintainAnswer.get(Arr_MaintainAnswer.size()-1);
                 Arr_MaintainAnswer = new ArrayList<>();
+                Arr_MaintainAnswer.add(temp);
                 posIndex=0;
                 Check_Maintain_Count_Star = 0;
                 break;
@@ -547,8 +570,13 @@ public class Activity_correct_play extends AppCompatActivity {
                         break;
                     } else if (Arr_MaintainAnswer.get(posIndex) == -1) {
                         if (txtCounterStar.getText().toString().equals("0")) {
+                            Log.e("3","4");
+                            page = true;
+                            Count_Down_Timer.cancel();
+                            finish();
                             Intent intent = new Intent(Activity_correct_play.this, Second.class);
                             startActivity(intent);
+//                            onRestart();
 //                            finish();
                             break;
                         }

@@ -1,54 +1,220 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Questionare>
+
+    <!--    1 -->
     <Item>
-        <Question>A P M </Question>
+        <Question>A P M</Question>
         <Answer>MAP</Answer>
         <Hint>Bản đồ</Hint>
     </Item>
+    <!--    2 -->
     <Item>
         <Question>K O R W</Question>
         <Answer>WORK</Answer>
         <Hint>Công việc, hoạt động</Hint>
     </Item>
+    <!--    3 -->
     <Item>
         <Question>L F M I</Question>
         <Answer>FILM</Answer>
         <Hint>Phim ảnh, quay phim</Hint>
     </Item>
+    <!--    4 -->
     <Item>
         <Question>L P I P U</Question>
         <Answer>PUPIL</Answer>
         <Hint>Học sinh</Hint>
     </Item>
+    <!--    5 -->
     <Item>
         <Question>I W S M</Question>
         <Answer>SWIM</Answer>
         <Hint>Bơi</Hint>
     </Item>
+    <!--    6 -->
     <Item>
         <Question>E L I F</Question>
         <Answer>LIFE</Answer>
         <Hint>Đời sống</Hint>
     </Item>
+    <!--    7 -->
     <Item>
         <Question>M F O R</Question>
         <Answer>FORM</Answer>
         <Hint>Hình thức</Hint>
     </Item>
+    <!--    8 -->
     <Item>
         <Question>H R W O T</Question>
         <Answer>THROW</Answer>
         <Hint>Quăng, ném</Hint>
     </Item>
+    <!--    9 -->
     <Item>
-        <Question>A C K L </Question>
+        <Question>A C K L</Question>
         <Answer>LACK</Answer>
         <Hint>Thiếu hụt</Hint>
     </Item>
+    <!--    10 -->
     <Item>
-        <Question>S M U C I</Question>
-        <Answer>MUSIC</Answer>
-        <Hint>Nhạc</Hint>
+        <Question>I N S E C T</Question>
+        <Answer>INSECT</Answer>
+        <Hint>Côn trùng</Hint>
     </Item>
-
+    <!--    11 -->
+    <Item>
+        <Question>A B I L I T Y</Question>
+        <Answer>ABILITY</Answer>
+        <Hint>Khả năng</Hint>
+    </Item>
+    <!--    12 -->
+    <Item>
+        <Question>A D D I T I O N</Question>
+        <Answer>ADDITION</Answer>
+        <Hint>Thêm vào</Hint>
+    </Item>
+    <!--    13 -->
+    <Item>
+        <Question>A N A L Y S I S</Question>
+        <Answer>ANALYSIS</Answer>
+        <Hint>Nghiên cứu</Hint>
+    </Item>
+    <!--    14 -->
+    <Item>
+        <Question>A R M Y</Question>
+        <Answer>ARMY</Answer>
+        <Hint>Quân đội</Hint>
+    </Item>
+    <!--    15 -->
+    <Item>
+        <Question>A P A R T M E N T</Question>
+        <Answer>APARTMENT</Answer>
+        <Hint>Căn hộ</Hint>
+    </Item>
+    <!--    16 -->
+    <Item>
+        <Question>A R T</Question>
+        <Answer>ART</Answer>
+        <Hint>Nghệ thuật</Hint>
+    </Item>
+    <!--    17 -->
+    <Item>
+        <Question>H R W O T</Question>
+        <Answer>THROW</Answer>
+        <Hint>Quăng, ném</Hint>
+    </Item>
+    <!--    18 -->
+    <Item>
+        <Question>A R T I C L E</Question>
+        <Answer>ARTICLE</Answer>
+        <Hint>Điều khoản</Hint>
+    </Item>
+    <!--    19 -->
+    <Item>
+        <Question>A U D I E N C E</Question>
+        <Answer>AUDIENCE</Answer>
+        <Hint>Khán giả</Hint>
+    </Item>
+    <!--    20 -->
+    <Item>
+        <Question>A T T E N T I O N</Question>
+        <Answer>ATTENTION</Answer>
+        <Hint>Chú ý</Hint>
+    </Item>
+    <!--    21 -->
+    <Item>
+        <Question>B A S I S</Question>
+        <Answer>BASIS</Answer>
+        <Hint>Căn cứ</Hint>
+    </Item>
+    <!--    22 -->
+    <Item>
+        <Question>B O Y F R I E N D</Question>
+        <Answer>BOYFRIEND</Answer>
+        <Hint>Bạn trai</Hint>
+    </Item>
+    <!--    23 -->
+    <Item>
+        <Question>C A M E R A</Question>
+        <Answer>CAMERA</Answer>
+        <Hint>Máy chụp hình</Hint>
+    </Item>
+    <!--    24 -->
+    <Item>
+        <Question>C O M M U N I T Y</Question>
+        <Answer>COMMUNITY</Answer>
+        <Hint>Cộng đồng</Hint>
+    </Item>
+    <!--    25 -->
+    <Item>
+        <Question>C O M P E T I T I O N</Question>
+        <Answer>COMPETITION</Answer>
+        <Hint>Cuộc thi</Hint>
+    </Item>
+    <!--    26 -->
+    <Item>
+        <Question>C O M P U T E R</Question>
+        <Answer>COMPUTER</Answer>
+        <Hint>Máy tính</Hint>
+    </Item>
+    <!--    27 -->
+    <Item>
+        <Question>C O N T R O L</Question>
+        <Answer>CONTROL</Answer>
+        <Hint>Kiểm soát</Hint>
+    </Item>
+    <!--    28 -->
+    <Item>
+        <Question>C O U N T R Y</Question>
+        <Answer>COUNTRY</Answer>
+        <Hint>Nước, quốc gia</Hint>
+    </Item>
+    <!--    29 -->
+    <Item>
+        <Question>C H I L D</Question>
+        <Answer>CHILD</Answer>
+        <Hint>Trẻ em</Hint>
+    </Item>
+    <!-- 30 -->
+    <Item>
+        <Question>D A T A</Question>
+        <Answer>DATA</Answer>
+        <Hint>Dữ liệu</Hint>
+    </Item>
+    <!-- 31 -->
+    <Item>
+        <Question>S E E M</Question>
+        <Answer>SEEM</Answer>
+        <Hint>Hình như</Hint>
+    </Item>
+    <!-- 32 -->
+    <Item>
+        <Question>B E L I E V E</Question>
+        <Answer>BELIEVE</Answer>
+        <Hint>Tin tưởng</Hint>
+    </Item>
+    <!-- 33 -->
+    <Item>
+        <Question>C O N T I N U E</Question>
+        <Answer>CONTINUE</Answer>
+        <Hint>Tiếp tục</Hint>
+    </Item>
+    <!-- 31 -->
+    <Item>
+        <Question>P R O D U C E</Question>
+        <Answer>PRODUCE</Answer>
+        <Hint>Sản xuất</Hint>
+    </Item>
+    <!-- 32 -->
+    <Item>
+        <Question>L I O N E S S</Question>
+        <Answer>LIONESS</Answer>
+        <Hint>Sư tử (cái)</Hint>
+    </Item>
+    <!-- 33 -->
+    <Item>
+        <Question>R H I N O C E R O S</Question>
+        <Answer>RHINOCEROS</Answer>
+        <Hint>Con tê giác</Hint>
+    </Item>
 </Questionare>

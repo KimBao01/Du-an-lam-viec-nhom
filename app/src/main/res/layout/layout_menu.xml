@@ -11,7 +11,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_gravity="center">
         <Button
             android:gravity="right"
@@ -19,33 +19,36 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/logout_icon"/>
+
         <RelativeLayout
-            android:layout_gravity="center"
+            android:layout_marginRight="30dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <TextView
-                android:layout_marginTop="35dp"
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="35dp"
                 android:fontFamily="@font/ravenpro_medium"
                 android:text="WELCOME TO"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textColor="#6ADF31"
                 android:textSize="30dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="40dp"/>
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textView1"
-                android:text="LEARNING ENGLISH"
-                android:textSize="30dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:fontFamily="@font/ravenpro_medium"
+                android:text="LEARNING ENGLISH"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textColor="#6ADF31"
+                android:textSize="30dp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
@@ -57,8 +60,8 @@
 
     <ImageView
         android:layout_marginTop="20dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:src="@drawable/eng_logo_home"
         android:layout_gravity="center"
         />
@@ -67,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
         android:text="Choose Mode"
         android:fontFamily="@font/ravenpro_bold"
@@ -79,15 +82,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:gravity="center">
+
         <Button
             android:id="@+id/btn_Quiz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_eng_quiz_menu" />
+
         <Button
             android:id="@+id/btn_Correct"
             android:layout_width="wrap_content"

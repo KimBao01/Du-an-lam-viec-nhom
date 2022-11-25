@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/img_showApp"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@drawable/eng_logo_show_app"/>
     <TextView
         android:id="@+id/textView_showApp"
@@ -25,6 +25,6 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:textSize="36dp"/>
+        android:textSize="40dp"/>
 
 </LinearLayout>
