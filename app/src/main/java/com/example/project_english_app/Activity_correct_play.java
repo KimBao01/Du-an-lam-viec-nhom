@@ -62,7 +62,7 @@ public class Activity_correct_play extends AppCompatActivity {
         setContentView(R.layout.layout_correct_play);
         AnhXa();
         ReadData(CheckAnswer);
-        CountDown();
+//        CountDown();
         GvChuCai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -84,8 +84,8 @@ public class Activity_correct_play extends AppCompatActivity {
                     StartTimeInt = 30;
                     pos++;
                     ReadData(CheckAnswer);
-                    Count_Down_Timer.cancel();
-                    CountDown();
+//                    Count_Down_Timer.cancel();
+//                    CountDown();
                     FullChuCai = "";
                     txtAnswer.setText(FullChuCai);
                     current = Pgb.getProgress();
@@ -113,8 +113,8 @@ public class Activity_correct_play extends AppCompatActivity {
                         txtAnswer.setText("");
                         pos++;
                         ReadData(CheckAnswer);
-                        Count_Down_Timer.cancel();
-                        CountDown();
+//                        Count_Down_Timer.cancel();
+//                        CountDown();
                         CorrectAnswer++;
                         txtCorrectAnswer.setText("Correct answers : "+String.valueOf(CorrectAnswer));
                     }
@@ -235,13 +235,6 @@ public class Activity_correct_play extends AppCompatActivity {
     void ReadData(boolean CheckAnswer) {
         int level = CheckLevel(CheckAnswer);
         English_CorrectWord Q1 = new English_CorrectWord();
-//        Log.e("lv read " + level, "asd");
-//        if(L.size()<10)
-//        {
-//            Log.e("success","asdsad");
-//        }
-//        else
-//        {
         if (L.size() < 10) {
 //            Log.e("Size " + L.size(), "asd");
             if (level == 0) {
@@ -403,8 +396,11 @@ public class Activity_correct_play extends AppCompatActivity {
             Log.e("pos " + pos, "asd");
             if (pos == 0) {
                 Display(pos);
+                CountDown();
             } else {
+                Count_Down_Timer.cancel();
                 Display(pos);
+                CountDown();
             }
             ;//Hiển thị câu hỏi kế tiếp
 //            if (pos >= L.size()) {
@@ -461,10 +457,8 @@ public class Activity_correct_play extends AppCompatActivity {
                 if(!page)
                 {
                     pos++;
-                    ReadData(CheckAnswer);
                     CheckAnswer = false;
-                    Count_Down_Timer.cancel();
-                    CountDown();
+                    ReadData(CheckAnswer);
                     FullChuCai = "";
                     txtAnswer.setText(FullChuCai);
                     current = Pgb.getProgress();
