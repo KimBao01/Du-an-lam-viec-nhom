@@ -50,125 +50,104 @@
         <Answer>EQUAL</Answer>
         <Hint>Bằng nhau, bình đẳng</Hint>
     </Item>
-    <!--    11 -->
     <Item>
         <Question>D E C I S I O N</Question>
         <Answer>DECISION</Answer>
         <Hint>Phán quyết</Hint>
     </Item>
-    <!--    12 -->
     <Item>
         <Question>D E F I N I T I O N</Question>
         <Answer>DEFINITION</Answer>
         <Hint>Định nghĩa</Hint>
     </Item>
-    <!--    13 -->
     <Item>
         <Question>D E P A R T M E N T</Question>
         <Answer>DEPARTMENT</Answer>
         <Hint>Căn hộ</Hint>
     </Item>
-    <!--    14 -->
     <Item>
         <Question>D E V E L O P M E N T</Question>
         <Answer>DEVELOPMENT</Answer>
         <Hint>Phát triển</Hint>
     </Item>
-    <!--    15 -->
     <Item>
         <Question>D I F F E R E N C E</Question>
         <Answer>DIFFERENCE</Answer>
         <Hint>Khác nhau</Hint>
     </Item>
-    <!--    16 -->
     <Item>
         <Question>D I R E C T I O N</Question>
         <Answer>DIRECTION</Answer>
         <Hint>Phương hướng</Hint>
     </Item>
-    <!--    17 -->
     <Item>
         <Question>D I S T R I B U T I O N</Question>
         <Answer>DISTRIBUTION</Answer>
         <Hint>Phân phát</Hint>
     </Item>
-    <!--    18 -->
     <Item>
         <Question>E N V I R O N M E N T</Question>
         <Answer>ENVIRONMENT</Answer>
         <Hint>Môi trường</Hint>
     </Item>
-    <!--    19 -->
     <Item>
         <Question>E Q U I P M E N T</Question>
         <Answer>EQUIPMENT</Answer>
         <Hint>Thiết bị</Hint>
     </Item>
-    <!--    20 -->
     <Item>
         <Question>E V E N T</Question>
         <Answer>EVENT</Answer>
         <Hint>Sự kiện</Hint>
     </Item>
-    <!--    21 -->
     <Item>
         <Question>E X A M</Question>
         <Answer>EXAM</Answer>
         <Hint>Thi</Hint>
     </Item>
-    <!--    22 -->
     <Item>
         <Question>F A M I L Y</Question>
         <Answer>FAMILY</Answer>
         <Hint>Gia đình</Hint>
     </Item>
-    <!--    23 -->
     <Item>
         <Question>F I S H I N G</Question>
         <Answer>FISHING</Answer>
         <Hint>Câu cá</Hint>
     </Item>
-    <!--    24 -->
     <Item>
         <Question>F R E E D O M</Question>
         <Answer>FREEDOM</Answer>
         <Hint>Sự tự do</Hint>
     </Item>
-    <!--    25 -->
     <Item>
         <Question>G O V E R N M E N T</Question>
         <Answer>GOVERNMENT</Answer>
         <Hint>Chính phủ</Hint>
     </Item>
-    <!--    26 -->
     <Item>
         <Question>G R O W T H</Question>
         <Answer>GROWTH</Answer>
         <Hint>Tăng trưởng</Hint>
     </Item>
-    <!--    27 -->
     <Item>
         <Question>H E A L T H</Question>
         <Answer>HEALTH</Answer>
         <Hint>Sức khỏe</Hint>
     </Item>
-    <!--    28 -->
     <Item>
         <Question>I N C O M E</Question>
-        <Answer>ICOME</Answer>
+        <Answer>INCOME</Answer>
         <Hint>Lợi tức</Hint>
     </Item>
-    <!--    29 -->
     <Item>
         <Question>I N F O R M A T I O N</Question>
         <Answer>INFORMATION</Answer>
         <Hint>Thông tin</Hint>
     </Item>
-    <!-- 30 -->
     <Item>
         <Question>I N S T A N C E</Question>
         <Answer>INSTANCE</Answer>
         <Hint>Trường hợp</Hint>
     </Item>
-
 </Questionare>

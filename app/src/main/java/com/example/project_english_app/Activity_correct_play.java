@@ -61,9 +61,6 @@ public class Activity_correct_play extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_correct_play);
         AnhXa();
-//        while(true)
-//        {
-        Log.e("true ", "Asd");
         ReadData(CheckAnswer);
         CountDown();
         GvChuCai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -78,7 +75,6 @@ public class Activity_correct_play extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Arr_MaintainAnswer.add(-1);
-                Log.e("Size : "+Arr_MaintainAnswer.size(),"1");
                 if (Arr_MaintainAnswer.size() > 2) {
                     Check_Maintain_Answer();
                 }
@@ -103,7 +99,6 @@ public class Activity_correct_play extends AppCompatActivity {
             public void onClick(View view) {
                 if (txtAnswer.getText().toString().trim().equals(L.get(pos).answer.trim())) {
                     Arr_MaintainAnswer.add(1);
-                    Log.e("Size : "+Arr_MaintainAnswer.size(),"1");
                     if (Arr_MaintainAnswer.size() > 2) {
                         Check_Maintain_Answer();
                     }
@@ -120,7 +115,6 @@ public class Activity_correct_play extends AppCompatActivity {
                         ReadData(CheckAnswer);
                         Count_Down_Timer.cancel();
                         CountDown();
-                        Log.e("level " + Level, "asd");
                         CorrectAnswer++;
                         txtCorrectAnswer.setText("Correct answers : "+String.valueOf(CorrectAnswer));
                     }
@@ -128,7 +122,7 @@ public class Activity_correct_play extends AppCompatActivity {
 //                    pos++;
 //                    Display(pos);
                 } else {
-                    Log.e(txtAnswer.getText().toString().trim() + " " + L.get(pos).answer, "asd");
+//                    Log.e(txtAnswer.getText().toString().trim() + " " + L.get(pos).answer, "asd");
                     Toast.makeText(Activity_correct_play.this, "Wrong " + FullChuCai, Toast.LENGTH_LONG).show();
                     FullChuCai = "";
                     txtAnswer.setText(FullChuCai);
@@ -233,7 +227,7 @@ public class Activity_correct_play extends AppCompatActivity {
                 Level = 0;//De~
             }
         }
-        Log.e("CheckAnswer " + CheckAnswer + "Level " + Level, "asd");
+//        Log.e("CheckAnswer " + CheckAnswer + "Level " + Level, "asd");
         return Level;
     }
 
@@ -241,7 +235,7 @@ public class Activity_correct_play extends AppCompatActivity {
     void ReadData(boolean CheckAnswer) {
         int level = CheckLevel(CheckAnswer);
         English_CorrectWord Q1 = new English_CorrectWord();
-        Log.e("lv read " + level, "asd");
+//        Log.e("lv read " + level, "asd");
 //        if(L.size()<10)
 //        {
 //            Log.e("success","asdsad");
@@ -261,30 +255,20 @@ public class Activity_correct_play extends AppCompatActivity {
                     Document doc = builder.parse(in);
                     Element root = doc.getDocumentElement();//lấy tag Root
                     NodeList list = root.getChildNodes();// lấy toàn bộ node con của Root
-//                    for(int i=0;i<list.getLength();i++)
-//                    {
-//                        if(i%2!=0)
-//                        {
-//                            if(Frag_Easy[i]==true)
-//                            {
-//                                Log.e("full Easy ","asd");
+                    int Cauhoi_Easy = 0;
+//                    while (true) {
+//                        Cauhoi_Easy = random.nextInt(list.getLength() - 1);
+//
+//                        if (Cauhoi_Easy % 2 != 0) {
+//                            if (Frag_Easy[Cauhoi_Easy] == false) {
+//                                break;
 //                            }
 //                        }
 //                    }
-                    Log.e("list length Easy " + list.getLength(), "asd");
-//                Frag_Easy[Cauhoi_Easy] = true;
-//                Log.e("Frag Easy "+Cauhoi_Easy,"asd");
-                    int Cauhoi_Easy = 0;
-                    while (true) {
+//                    for (int i = 0; i < list.getLength(); i++) {
+                    while(true)
+                    {
                         Cauhoi_Easy = random.nextInt(list.getLength() - 1);
-
-                        if (Cauhoi_Easy % 2 != 0) {
-                            if (Frag_Easy[Cauhoi_Easy] == false) {
-                                break;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < list.getLength(); i++) {
                         Node node = list.item(Cauhoi_Easy);// mỗi lần duyệt thì lấy ra 1 node
                         if (node instanceof Element) {
                             if (Frag_Easy[Cauhoi_Easy] == false) {
@@ -298,7 +282,6 @@ public class Activity_correct_play extends AppCompatActivity {
                                 listChild = Item.getElementsByTagName("Hint");
                                 String hint = listChild.item(0).getTextContent();
                                 //lưu vào list
-
                                 Q1.question = question;
                                 Q1.hint = hint;
                                 Q1.answer = answer;
@@ -307,14 +290,9 @@ public class Activity_correct_play extends AppCompatActivity {
                                 break;
                             }
                         }
-//                    else
-//                    {
-//                        Log.e("i3 Cauhoi_Easy "+i,"Asd");
-//                    }
-//                }
-//                }
-
                     }
+
+//                    }
                 } catch (ParserConfigurationException e) {
                     e.printStackTrace();
                 } catch (FileNotFoundException e) {
@@ -335,34 +313,14 @@ public class Activity_correct_play extends AppCompatActivity {
                     Document doc = builder.parse(in);
                     Element root = doc.getDocumentElement();//lấy tag Root
                     NodeList list = root.getChildNodes();// lấy toàn bộ node con của Root
-//                    for(int i=0;i<list.getLength();i++)
-//                    {
-//                        if(i%2!=0)
-//                        {
-//                            if(Frag_Medium[i]==true)
-//                            {
-//                                Log.e("full Medium ","asd");
-//                            }
-//                        }
-//                    }
-//                    Log.e("list length Medium " + list.getLength(), "asd");
-//                Frag_Easy[Cauhoi_Easy] = true;
-//                Log.e("Frag Easy "+Cauhoi_Easy,"asd");
                     int Cauhoi_Medium = 0;
-                    while (true) {
+                    while(true)
+                    {
                         Cauhoi_Medium = random.nextInt(list.getLength() - 1);
-                        if (Cauhoi_Medium % 2 != 0) {
-                            if (Frag_Medium[Cauhoi_Medium] == false) {
-                                break;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < list.getLength(); i++) {
                         Node node = list.item(Cauhoi_Medium);// mỗi lần duyệt thì lấy ra 1 node
                         if (node instanceof Element) {
-//                        if(Frag_Easy[Cauhoi_Easy]==false)
-                            {
-//                                Log.e("i1 Cauhoi_Medium" + Cauhoi_Medium, "Asd");
+                            if (Frag_Medium[Cauhoi_Medium] == false) {
+//                                Log.e("i1 Cauhoi_Easy" + Cauhoi_Easy, "Asd");
                                 Element Item = (Element) node;// lấy được tag Item
                                 // lấy tag ID bên trong của tag Item
                                 NodeList listChild = Item.getElementsByTagName("Question");
@@ -372,22 +330,14 @@ public class Activity_correct_play extends AppCompatActivity {
                                 listChild = Item.getElementsByTagName("Hint");
                                 String hint = listChild.item(0).getTextContent();
                                 //lưu vào list
-
                                 Q1.question = question;
                                 Q1.hint = hint;
                                 Q1.answer = answer;
-//                                Log.e("i2 Cauhoi_Medium " + Cauhoi_Medium, "Asd");
+//                                Log.e("i2 Cauhoi_Easy " + Cauhoi_Easy, "Asd");
                                 Frag_Medium[Cauhoi_Medium] = true;
                                 break;
                             }
                         }
-//                    else
-//                    {
-//                        Log.e("i3 Cauhoi_Easy "+i,"Asd");
-//                    }
-//                }
-//                }
-
                     }
                 } catch (ParserConfigurationException e) {
                     e.printStackTrace();
@@ -409,34 +359,18 @@ public class Activity_correct_play extends AppCompatActivity {
                     Document doc = builder.parse(in);
                     Element root = doc.getDocumentElement();//lấy tag Root
                     NodeList list = root.getChildNodes();// lấy toàn bộ node con của Root
-//                    for(int i=0;i<list.getLength();i++)
-//                    {
-//                        if(i%2!=0)
-//                        {
-//                            if(Frag_Easy[i]==true)
-//                            {
-//                                Log.e("full Easy ","asd");
-//                            }
-//                        }
-//                    }
-                    Log.e("list length Easy " + list.getLength(), "asd");
+
+//                    Log.e("list length Easy " + list.getLength(), "asd");
 //                Frag_Easy[Cauhoi_Easy] = true;
 //                Log.e("Frag Easy "+Cauhoi_Easy,"asd");
                     int Cauhoi_Hard = 0;
-                    while (true) {
+                    while(true)
+                    {
                         Cauhoi_Hard = random.nextInt(list.getLength() - 1);
-
-                        if (Cauhoi_Hard % 2 != 0) {
-                            if (Frag_Easy[Cauhoi_Hard] == false) {
-                                break;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < list.getLength(); i++) {
                         Node node = list.item(Cauhoi_Hard);// mỗi lần duyệt thì lấy ra 1 node
                         if (node instanceof Element) {
-                            if (Frag_Easy[Cauhoi_Hard] == false) {
-                                Log.e("i1 Cauhoi_Hard " + Cauhoi_Hard, "Asd");
+                            if (Frag_Hard[Cauhoi_Hard] == false) {
+//                                Log.e("i1 Cauhoi_Easy" + Cauhoi_Easy, "Asd");
                                 Element Item = (Element) node;// lấy được tag Item
                                 // lấy tag ID bên trong của tag Item
                                 NodeList listChild = Item.getElementsByTagName("Question");
@@ -446,20 +380,14 @@ public class Activity_correct_play extends AppCompatActivity {
                                 listChild = Item.getElementsByTagName("Hint");
                                 String hint = listChild.item(0).getTextContent();
                                 //lưu vào list
-
                                 Q1.question = question;
                                 Q1.hint = hint;
                                 Q1.answer = answer;
-                                Log.e("i2 Cauhoi_Hard  " + Cauhoi_Hard, "Asd");
-                                Frag_Easy[Cauhoi_Hard] = true;
+//                                Log.e("i2 Cauhoi_Easy " + Cauhoi_Easy, "Asd");
+                                Frag_Hard[Cauhoi_Hard] = true;
                                 break;
                             }
-                        } else {
-                            Log.e("i3 Cauhoi_Hard " + i, "Asd");
                         }
-//                }
-//                }
-
                     }
                 } catch (ParserConfigurationException e) {
                     e.printStackTrace();
@@ -497,7 +425,7 @@ public class Activity_correct_play extends AppCompatActivity {
         } else {
             if(page==false)
             {
-                Log.e("5","6");
+//                Log.e("5","6");
                 finish();
                 Count_Down_Timer.cancel();
                 Intent intent = new Intent(Activity_correct_play.this, Second.class);
@@ -548,10 +476,10 @@ public class Activity_correct_play extends AppCompatActivity {
     }
 
     void Check_Maintain_Answer() {
-        Log.e("pos :" + posIndex, "ArrCheck :" + Arr_MaintainAnswer.size());
+//        Log.e("pos :" + posIndex, "ArrCheck :" + Arr_MaintainAnswer.size());
         String Str_HighStar;
         while (posIndex < Arr_MaintainAnswer.size()) {
-            Log.e("i " + posIndex, "1");
+//            Log.e("i " + posIndex, "1");
             if (Arr_MaintainAnswer.get(posIndex) != Arr_MaintainAnswer.get(posIndex + 1)) {
                 temp = Arr_MaintainAnswer.get(Arr_MaintainAnswer.size()-1);
                 Arr_MaintainAnswer = new ArrayList<>();
@@ -562,7 +490,7 @@ public class Activity_correct_play extends AppCompatActivity {
             }
             else {
                 Check_Maintain_Count_Star++;
-                Log.e("asdjklasdjlkasjdk ","1");
+//                Log.e("asdjklasdjlkasjdk ","1");
                 if (Check_Maintain_Count_Star == 2) {
                     if (Arr_MaintainAnswer.get(posIndex) == 1) {
                         High_Star++;
@@ -574,7 +502,7 @@ public class Activity_correct_play extends AppCompatActivity {
                         break;
                     } else if (Arr_MaintainAnswer.get(posIndex) == -1) {
                         if (txtCounterStar.getText().toString().equals("0")) {
-                            Log.e("3","4");
+//                            Log.e("3","4");
                             page = true;
                             Count_Down_Timer.cancel();
                             finish();
