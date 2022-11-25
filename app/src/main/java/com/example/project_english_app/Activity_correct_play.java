@@ -176,42 +176,46 @@ public class Activity_correct_play extends AppCompatActivity {
         question = new ArrayList<>();
         ChuCai = new ArrayList<>();
         String test="";
-        String[] Split_Ques = L.get(i).question.split(" ");
+        if(L.get(i).question!=null)
+        {
+            String[] Split_Ques = L.get(i).question.split(" ");
 //        for(int a=0;a<Split_Ques.length;a++)
 //        {
 //            Log.e(Split_Ques[a]+"","asd");
 //        }
-        for(int k=0;k<Split_Ques.length;k++)
-        {
-            question.add(Split_Ques[k]);
-        }
-//        Log.e("origin "+question,"1");
-        Collections.shuffle(question);
-//        Log.e("shuffer "+question,"1");
-        while(true)
-        {
-            for (int j = 0; j < question.size(); j++) {
-                test+=question.get(j);
-            }
-            if(!test.equals(L.get(i).answer.trim()))
+            for(int k=0;k<Split_Ques.length;k++)
             {
-                break;
+                question.add(Split_Ques[k]);
             }
-            else test = "";
-        }
+//        Log.e("origin "+question,"1");
+            Collections.shuffle(question);
+//        Log.e("shuffer "+question,"1");
+            while(true)
+            {
+                for (int j = 0; j < question.size(); j++) {
+                    test+=question.get(j);
+                }
+                if(!test.equals(L.get(i).answer.trim()))
+                {
+                    break;
+                }
+                else test = "";
+            }
 //        Log.e("test "+test,"1");
 
-        for (int j = 0; j < question.size(); j++) {
-            ChuCai.add(new ChuCai_CorrectWord(question.get(j)));
-        }
-        ChuCaiAdapter = new ChuCai_Adapter(ChuCai, this, R.layout.dong_correct_word);
-        GvChuCai.setAdapter(ChuCaiAdapter);
-        txtHint.setText(L.get(i).hint);
+            for (int j = 0; j < question.size(); j++) {
+                ChuCai.add(new ChuCai_CorrectWord(question.get(j)));
+            }
+            ChuCaiAdapter = new ChuCai_Adapter(ChuCai, this, R.layout.dong_correct_word);
+            GvChuCai.setAdapter(ChuCaiAdapter);
+            txtHint.setText(L.get(i).hint);
 //        B.setText(L.get(i).AnswerB);
 //        C.setText(L.get(i).AnswerC);
 //        D.setText(L.get(i).AnswerD);
 //        Ketqua.setText("Câu đúng:" + kq);
 //        RG.clearCheck(); //xóa checked
+        }
+
     }
 
     int CheckLevel(boolean CheckAnswer) {
