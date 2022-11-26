@@ -19,7 +19,7 @@
         android:id="@+id/textView_showApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Learning Enlgish"
+        android:text="Learning English"
         android:textColor="#FFFFFF"
         android:fontFamily="@font/ravenpro_bold"
         android:textStyle="bold"

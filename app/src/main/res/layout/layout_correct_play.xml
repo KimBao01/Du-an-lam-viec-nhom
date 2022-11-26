@@ -72,6 +72,8 @@
             android:textColor="@color/black"
             android:id="@+id/textTimer"/>
             <TextView
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:id="@+id/HintCorrectWord"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/textTimer"
