@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class Activity_result extends AppCompatActivity {
     private PieChart pieChart;
-    private Button btnResult;
+    private Button btnResult, btnNextOneItem;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,6 +35,14 @@ public class Activity_result extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openActivity_correct_home();
+            }
+        });
+
+        btnNextOneItem = (Button) findViewById(R.id.btn_nextOneItem);
+        btnNextOneItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity_one_item_rank();
             }
         });
 
@@ -96,6 +104,11 @@ public class Activity_result extends AppCompatActivity {
 
     public void openActivity_correct_home() {
         Intent intent = new Intent(this, Activity_correct_home.class);
+        startActivity(intent);
+    }
+
+    public void openActivity_one_item_rank() {
+        Intent intent = new Intent(this, Activity_one_item_rank.class);
         startActivity(intent);
     }
 }

@@ -36,6 +36,7 @@
         android:layout_marginBottom="50dp"
         android:gravity="center|bottom">
 
+
         <Button
             android:id="@+id/btn_result"
             android:layout_width="280dp"
@@ -45,5 +46,14 @@
             android:textColor="#ffffff"
             android:textSize="22dp"
             android:text="BACK TO MENU" />
+
+        <Button
+            android:id="@+id/btn_nextOneItem"
+            android:layout_marginLeft="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_back"
+            android:backgroundTint="#75C700"
+            android:textColor="#ffffff"/>
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
