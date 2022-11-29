@@ -25,6 +25,14 @@ public class Activity_correct_home extends AppCompatActivity {
             }
         });
 
+        btnCorrecHigSco = (Button) findViewById(R.id.btn_CorrectHighSco);
+        btnCorrecHigSco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity_result();
+            }
+        });
+
         btnCorrecInstuc = (Button) findViewById(R.id.btn_CorrectInstruc);
         btnCorrecInstuc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +52,11 @@ public class Activity_correct_home extends AppCompatActivity {
 
     public void openActivity_correct_play() {
         Intent intent = new Intent(this, Activity_correct_play.class);
+        startActivity(intent);
+    }
+
+    public void openActivity_result() {
+        Intent intent = new Intent(this, Activity_result.class);
         startActivity(intent);
     }
 
