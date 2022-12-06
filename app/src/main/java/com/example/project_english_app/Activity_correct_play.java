@@ -1,9 +1,12 @@
 package com.example.project_english_app;
 
+//import static com.example.project_english_app.member.getCurrentTime;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -19,13 +22,18 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Time;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -42,18 +50,20 @@ class English_CorrectWord {
 public class Activity_correct_play extends AppCompatActivity {
     private Button btnBack, btnAnswer, btnSkip;
     GridView GvChuCai;
-    TextView txtHint, txtAnswer, txtTimer, txtCounterStar,txtCorrectAnswer;
+    TextView txtHint, txtAnswer, txtTimer, txtCounterStar, txtCorrectAnswer;
     ArrayList<ChuCai_CorrectWord> ChuCai;
     ProgressBar Pgb;
     ChuCai_Adapter ChuCaiAdapter;
     ArrayList<English_CorrectWord> L = new ArrayList();
     ArrayList<Integer> Arr_MaintainAnswer;
     String FullChuCai = "";
-    ArrayList<String>question;
-    int Level = 0, pos = 0, current, StartTimeInt = 30, Check_Maintain_Count_Star = 0, posIndex = 0, High_Star = 0,CorrectAnswer=0,temp = 0;
+    ArrayList<String> question;
+    ArrayList<member> MemberList;
+    int Level = 0, pos = 0, current, StartTimeInt = 30, Check_Maintain_Count_Star = 0, posIndex = 0, High_Star = 0, CorrectAnswer = 0, temp = 0, total_Time = 0, count;
     Random random = new Random();
-    boolean Frag_Easy[] = new boolean[1000], Frag_Medium[] = new boolean[1000], Frag_Hard[] = new boolean[1000], CheckAnswer = false,page = false;
+    boolean Frag_Easy[] = new boolean[1000], Frag_Medium[] = new boolean[1000], Frag_Hard[] = new boolean[1000], CheckAnswer = false, page = false;
     CountDownTimer Count_Down_Timer;
+    private static final String FILE_NAME = "rankUpdate.txt";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -62,6 +72,7 @@ public class Activity_correct_play extends AppCompatActivity {
         setContentView(R.layout.layout_correct_play);
         AnhXa();
         ReadData(CheckAnswer);
+        System.gc();
 //        CountDown();
         GvChuCai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -78,8 +89,7 @@ public class Activity_correct_play extends AppCompatActivity {
                 if (Arr_MaintainAnswer.size() > 2) {
                     Check_Maintain_Answer();
                 }
-                if(!page)
-                {
+                if (!page) {
                     CheckAnswer = false;
                     StartTimeInt = 30;
                     pos++;
@@ -102,8 +112,7 @@ public class Activity_correct_play extends AppCompatActivity {
                     if (Arr_MaintainAnswer.size() > 2) {
                         Check_Maintain_Answer();
                     }
-                    if(!page)
-                    {
+                    if (!page) {
                         CheckAnswer = true;
                         StartTimeInt = 30;
                         current = Pgb.getProgress();
@@ -116,7 +125,7 @@ public class Activity_correct_play extends AppCompatActivity {
 //                        Count_Down_Timer.cancel();
 //                        CountDown();
                         CorrectAnswer++;
-                        txtCorrectAnswer.setText("Correct answers : "+String.valueOf(CorrectAnswer));
+                        txtCorrectAnswer.setText("Correct answers : " + String.valueOf(CorrectAnswer));
                     }
 
 //                    pos++;
@@ -149,7 +158,9 @@ public class Activity_correct_play extends AppCompatActivity {
 
 
     public void AnhXa() {
-        txtCorrectAnswer = (TextView)findViewById(R.id.CorrectAnswer);
+        total_Time = 0;
+        MemberList = new ArrayList<>();
+        txtCorrectAnswer = (TextView) findViewById(R.id.CorrectAnswer);
         Arr_MaintainAnswer = new ArrayList<Integer>();
         txtCounterStar = (TextView) findViewById(R.id.CounterStar);
         txtTimer = (TextView) findViewById(R.id.textTimer);
@@ -169,31 +180,26 @@ public class Activity_correct_play extends AppCompatActivity {
     void Display(int i) {
         question = new ArrayList<>();
         ChuCai = new ArrayList<>();
-        String test="";
-        if(L.get(i).question!=null)
-        {
+        String test = "";
+        if (L.get(i).question != null) {
             String[] Split_Ques = L.get(i).question.split(" ");
 //        for(int a=0;a<Split_Ques.length;a++)
 //        {
 //            Log.e(Split_Ques[a]+"","asd");
 //        }
-            for(int k=0;k<Split_Ques.length;k++)
-            {
+            for (int k = 0; k < Split_Ques.length; k++) {
                 question.add(Split_Ques[k]);
             }
 //        Log.e("origin "+question,"1");
             Collections.shuffle(question);
 //        Log.e("shuffer "+question,"1");
-            while(true)
-            {
+            while (true) {
                 for (int j = 0; j < question.size(); j++) {
-                    test+=question.get(j);
+                    test += question.get(j);
                 }
-                if(!test.equals(L.get(i).answer.trim()))
-                {
+                if (!test.equals(L.get(i).answer.trim())) {
                     break;
-                }
-                else test = "";
+                } else test = "";
             }
 //        Log.e("test "+test,"1");
 
@@ -259,8 +265,7 @@ public class Activity_correct_play extends AppCompatActivity {
 //                        }
 //                    }
 //                    for (int i = 0; i < list.getLength(); i++) {
-                    while(true)
-                    {
+                    while (true) {
                         Cauhoi_Easy = random.nextInt(list.getLength() - 1);
                         Node node = list.item(Cauhoi_Easy);// mỗi lần duyệt thì lấy ra 1 node
                         if (node instanceof Element) {
@@ -307,8 +312,7 @@ public class Activity_correct_play extends AppCompatActivity {
                     Element root = doc.getDocumentElement();//lấy tag Root
                     NodeList list = root.getChildNodes();// lấy toàn bộ node con của Root
                     int Cauhoi_Medium = 0;
-                    while(true)
-                    {
+                    while (true) {
                         Cauhoi_Medium = random.nextInt(list.getLength() - 1);
                         Node node = list.item(Cauhoi_Medium);// mỗi lần duyệt thì lấy ra 1 node
                         if (node instanceof Element) {
@@ -357,8 +361,7 @@ public class Activity_correct_play extends AppCompatActivity {
 //                Frag_Easy[Cauhoi_Easy] = true;
 //                Log.e("Frag Easy "+Cauhoi_Easy,"asd");
                     int Cauhoi_Hard = 0;
-                    while(true)
-                    {
+                    while (true) {
                         Cauhoi_Hard = random.nextInt(list.getLength() - 1);
                         Node node = list.item(Cauhoi_Hard);// mỗi lần duyệt thì lấy ra 1 node
                         if (node instanceof Element) {
@@ -419,23 +422,32 @@ public class Activity_correct_play extends AppCompatActivity {
 //
 //            }
         } else {
-            if(page==false)
-            {
+            if (page == false) {
 //                Log.e("5","6");
                 finish();
                 Count_Down_Timer.cancel();
-                Intent intent = new Intent(Activity_correct_play.this, Second.class);
+                Intent intent = new Intent(this, Activity_result.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("CorrectAnswer", CorrectAnswer);
+                save();
+                Collections.sort(MemberList);
+                Log.e("test" + MemberList, "");
+                intent.putExtra("correct_play",bundle);
                 startActivity(intent);
             }
-
         }
     }
 
     void CountDown() {
+
         Count_Down_Timer = new CountDownTimer(31000, 1000) {
             @Override
             public void onTick(long l) {
-                Log.e("1","2");
+                count = 0;
+                count++;
+                total_Time=total_Time+count;
+                Log.e("Time : "+total_Time,"");
+//                Log.e("1", "2");
                 String StartTimeString = String.valueOf(StartTimeInt);
                 if (StartTimeInt >= 10) {
                     txtTimer.setText("00:" + StartTimeString);
@@ -449,13 +461,13 @@ public class Activity_correct_play extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                total_Time += count;
                 StartTimeInt = 30;
                 Arr_MaintainAnswer.add(-1);
                 if (Arr_MaintainAnswer.size() > 2) {
                     Check_Maintain_Answer();
                 }
-                if(!page)
-                {
+                if (!page) {
                     pos++;
                     CheckAnswer = false;
                     ReadData(CheckAnswer);
@@ -475,14 +487,13 @@ public class Activity_correct_play extends AppCompatActivity {
         while (posIndex < Arr_MaintainAnswer.size()) {
 //            Log.e("i " + posIndex, "1");
             if (Arr_MaintainAnswer.get(posIndex) != Arr_MaintainAnswer.get(posIndex + 1)) {
-                temp = Arr_MaintainAnswer.get(Arr_MaintainAnswer.size()-1);
+                temp = Arr_MaintainAnswer.get(Arr_MaintainAnswer.size() - 1);
                 Arr_MaintainAnswer = new ArrayList<>();
                 Arr_MaintainAnswer.add(temp);
-                posIndex=0;
+                posIndex = 0;
                 Check_Maintain_Count_Star = 0;
                 break;
-            }
-            else {
+            } else {
                 Check_Maintain_Count_Star++;
 //                Log.e("asdjklasdjlkasjdk ","1");
                 if (Check_Maintain_Count_Star == 2) {
@@ -500,7 +511,7 @@ public class Activity_correct_play extends AppCompatActivity {
                             page = true;
                             Count_Down_Timer.cancel();
                             finish();
-                            Intent intent = new Intent(Activity_correct_play.this, Second.class);
+                            Intent intent = new Intent(Activity_correct_play.this, Activity_playAgain.class);
                             startActivity(intent);
 //                            onRestart();
 //                            finish();
@@ -519,13 +530,128 @@ public class Activity_correct_play extends AppCompatActivity {
             }
         }
     }
-    void NextPage()
-    {
+
+    void NextPage() {
         Intent intent = new Intent(this, Activity_correct_home.class);
         startActivity(intent);
 //        overridePendingTransition(R.anim.nextpage,R.anim.backpage);
     }
 
+    void save() {
+        boolean check = false;
+        SharedPreferences myPrefs;
+        String email = "";
+        myPrefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
+        email = myPrefs.getString("Email1", "");
+//        MemberList = new ArrayList<>();
+        if (MemberList.size()>=0) {
+            Log.e("not null", "asdasd");
+            MemberList = MemberList();
+            Log.e("" + MemberList.size(), "size");
+        }
+//        MemberList = new ArrayList<>();
+        Log.e("email", "" + email);
+        Log.e("" + MemberList, "");
+        if (MemberList.size() == 0) {//Neu File Rong thi Add 1 Member
+            Log.e("1", "1");
+            MemberList.add(new member(email, CorrectAnswer, High_Star, total_Time));
+            check = true;
+        }
+        if (MemberList.size() > 0) { //Add 1 Member vao File
+            Log.e("2", "2");
+            for (int i = 0; i < MemberList.size(); i++) {
+                Log.e("for", "");
+                Log.e("membername", "" + MemberList.get(i).getName());
+                Log.e("email", "" + email);
+                if (MemberList.get(i).getName().trim().compareTo(email.trim()) == 0) {
+                    Log.e("name", "");
+                    MemberList.remove(i);
+                    MemberList.add(i, new member(email, CorrectAnswer, High_Star, total_Time));
+                    check = true;
+                    break;
+                }
+            }
+        }
+        if (MemberList.size() > 10)//Loc file cho gon gang
+        {
+            for (int i = MemberList().size() - 1; i > 5; i--)//5 : 0 -> 4
+            {
+                MemberList.remove(i);
+            }
+        }
+        if (!check) {
+            MemberList.add(new member(email, CorrectAnswer, High_Star, total_Time));
+        }
+        FileOutputStream fos = null;
+        try {
+            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+            PrintWriter pw = new PrintWriter(fos);
+            for (member mb : MemberList) {
+                pw.println(mb.toString());
+            }
+//            edtID.getText().clear();
+            Toast.makeText(Activity_correct_play.this, "Saved to " + getFilesDir() + "/" + FILE_NAME, Toast.LENGTH_LONG).show();
+            pw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    ArrayList<member> MemberList() {
+        Log.e("asdjklasdjlasdjk", "asdasdasdasdasdsad");
+        ArrayList<member> getMemberList = new ArrayList<>();
+        FileInputStream fis = null;
+        try {
+            fis = openFileInput(FILE_NAME);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+//            StringBuilder sb = new StringBuilder();
+            String text = null;
+            while (true) {
+                if ((text = br.readLine()) != null) {
+                    if (text.trim() == " ") continue;
+                    String[] list = text.split(" ");
+                    getMemberList.add(new member(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2]), Integer.parseInt(list[3])));
+//                    sb.append(text).append("\n");
+                    Log.e("size", "" + getMemberList.size());
+                } else {
+                    return getMemberList;
+                }
+
+            }
+
+//            Log.e("test",""+sb.toString());
+//            for(member mb:MemberList)
+//            {
+//                Log.e("in ",""+mb.toString());
+//
+//            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
 
 
 }

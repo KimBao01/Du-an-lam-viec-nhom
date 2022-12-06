@@ -2,6 +2,7 @@ package com.example.project_english_app;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -18,9 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -30,10 +29,11 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Activity_LogIn extends AppCompatActivity {
     FirebaseAuth firebase_Auth;
     Button btn_Login;
-    EditText Edt_Email,Edt_Pass;
+    EditText Edt_Email, Edt_Pass;
     Button signinRes;
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 0;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,30 +48,34 @@ public class Activity_LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 String email = Edt_Email.getText().toString().trim();
                 String pass = Edt_Pass.getText().toString().trim();
-                if(email.isEmpty())
-                {
+                if (email.isEmpty()) {
                     Edt_Email.setError("Email cannot be empty");
                 }
-                if(pass.isEmpty())
-                {
+                if (pass.isEmpty()) {
                     Edt_Pass.setError("Password cannot be empty ");
-                }
-                else if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches())
-                {
-                    if(!pass.isEmpty())
-                    {
-                        firebase_Auth.signInWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                } else if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    if (!pass.isEmpty()) {
+                        firebase_Auth.signInWithEmailAndPassword(email, pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                Toast.makeText(Activity_LogIn.this,"Login Successful",Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(Activity_LogIn.this,Activity_menu.class);
+                                String[] Email_Split = email.split("@");
+                                Toast.makeText(Activity_LogIn.this, "Login Successful", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(Activity_LogIn.this, Activity_menu.class);
+                                SharedPreferences myPrefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
+                                SharedPreferences.Editor prefsEditor;
+                                prefsEditor = myPrefs.edit();
+                                prefsEditor.putString("Email1", Email_Split[0]);
+                                prefsEditor.commit();
+                                Log.e("Email", "" + Email_Split[0]);
+//                                bundle.putString("email1",Email_Split[0]);
+//                                IntentLogin.putExtra("Login",bundle);
                                 startActivity(intent);
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Activity_LogIn.this,"Login Failed",Toast.LENGTH_LONG);
+                                Toast.makeText(Activity_LogIn.this, "Login Failed", Toast.LENGTH_LONG);
                             }
                         });
                     }
@@ -80,15 +84,15 @@ public class Activity_LogIn extends AppCompatActivity {
             }
         });
 
-    signinRes.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(Activity_LogIn.this,Activity_Register.class);
-            startActivity(intent);
-            finish();
+        signinRes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Activity_LogIn.this, Activity_Register.class);
+                startActivity(intent);
+                finish();
 
-        }
-    });
+            }
+        });
 //        signin.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -102,14 +106,17 @@ public class Activity_LogIn extends AppCompatActivity {
 //        });
 
     }
+
     public void openActivity_menu() {
         Intent intent = new Intent(this, Activity_menu.class);
         startActivity(intent);
     }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -118,17 +125,18 @@ public class Activity_LogIn extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
-            Toast.makeText(Activity_LogIn.this,"resetquestcode "+requestCode,Toast.LENGTH_LONG).show();
+            Toast.makeText(Activity_LogIn.this, "resetquestcode " + requestCode, Toast.LENGTH_LONG).show();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
     }
+
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
-            Toast.makeText(Activity_LogIn.this,"asd",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(Activity_LogIn.this,Second.class);
+            Toast.makeText(Activity_LogIn.this, "asd", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Activity_LogIn.this, Activity_playAgain.class);
             startActivity(intent);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -137,12 +145,12 @@ public class Activity_LogIn extends AppCompatActivity {
 
         }
     }
+
     @SuppressLint("WrongViewCast")
-    public void AnhXa()
-    {
+    public void AnhXa() {
         Edt_Email = (EditText) findViewById(R.id.LogEmail);
-        Edt_Pass = (EditText)findViewById(R.id.LogPass);
+        Edt_Pass = (EditText) findViewById(R.id.LogPass);
         btn_Login = (Button) findViewById(R.id.loginButton);
-        signinRes = (Button)findViewById(R.id.registerPage);
+        signinRes = (Button) findViewById(R.id.registerPage);
     }
 }

@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -23,14 +24,17 @@ import java.util.ArrayList;
 public class Activity_result extends AppCompatActivity {
     private PieChart pieChart;
     private Button btnResult, btnNextOneItem;
+    int Correct_Answer,Wrong_Answer;
+    float Per_Correct_Ans,Per_Wrong_Ans;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_result);
-
-        btnResult = (Button) findViewById(R.id.btn_result);
+        AnhXa();
+        Intent callerIntent=getIntent();
+        Bundle packageFromCaller= callerIntent.getBundleExtra("correct_play");
         btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,8 +49,16 @@ public class Activity_result extends AppCompatActivity {
                 openActivity_one_item_rank();
             }
         });
+        Correct_Answer = packageFromCaller.getInt("CorrectAnswer");
+//        Log.e("result",""+Correct_Answer);
+        Wrong_Answer = 10-Correct_Answer;
+//        Log.e("result",""+Wrong_Answer);
+        Per_Correct_Ans = (float)Correct_Answer/10;
+//        Log.e("result",""+Per_Correct_Ans);
+        Per_Wrong_Ans = (float)Wrong_Answer/10;
+//        Log.e("result",""+Per_Wrong_Ans);
 
-        pieChart = findViewById(R.id.activity_main_piechart);
+
         setupPieChart();
         loadPieChartData();
     }
@@ -70,8 +82,8 @@ public class Activity_result extends AppCompatActivity {
     }
     private void loadPieChartData () {
         ArrayList<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(0.05f, "Food & Dining"));
-        entries.add(new PieEntry(0.05f, "Medical"));
+        entries.add(new PieEntry(Per_Correct_Ans, "% câu đúng"));
+        entries.add(new PieEntry(Per_Wrong_Ans, "% câu sai"));
 //            entries.add(new PieEntry(95.10f, "Entertainment"));
 //            entries.add(new PieEntry(0.25f, "Electricity and Gas"));
 //            entries.add(new PieEntry(0.3f, "Housing"));
@@ -108,7 +120,14 @@ public class Activity_result extends AppCompatActivity {
     }
 
     public void openActivity_one_item_rank() {
-        Intent intent = new Intent(this, Activity_one_item_rank.class);
+        Intent intent = new Intent(this, Activity_Highscore.class);
         startActivity(intent);
+        finish();
+    }
+    void AnhXa()
+    {
+        btnResult = (Button) findViewById(R.id.btn_result);
+        pieChart = findViewById(R.id.activity_main_piechart);
+
     }
 }

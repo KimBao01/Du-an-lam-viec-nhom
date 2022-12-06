@@ -56,7 +56,7 @@ public class Activity_correct_home extends AppCompatActivity {
     }
 
     public void openActivity_result() {
-        Intent intent = new Intent(this, Activity_result.class);
+        Intent intent = new Intent(this, Activity_Highscore.class);
         startActivity(intent);
     }
 

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E8E7E7">
+    android:layout_marginTop="10dp">
 
 
 
     <RelativeLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginRight="5dp"
@@ -17,8 +17,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginLeft="40dp"
+            >
 
             <ImageView
                 android:layout_width="match_parent"
@@ -36,9 +36,10 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/TvTop"
             android:layout_width="85dp"
             android:layout_height="85dp"
-            android:layout_marginStart="20dp"
+
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/bg_cricle_ranking"
@@ -62,6 +63,7 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/start_icon"/>
             <TextView
+                android:id="@+id/TvSao"
                 android:layout_marginLeft="5dp"
                 android:gravity="center|left"
                 android:layout_width="match_parent"
@@ -79,6 +81,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/TvName"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_weight="1"
@@ -91,6 +94,7 @@
                 android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/TvSoCau"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -99,6 +103,15 @@
                 android:fontFamily="@font/ravenpro_medium"
                 android:textColor="#8A817C"
                 android:textSize="20dp" />
+            <TextView
+                android:id="@+id/TvTime"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Thời gian : 5s"
+                android:textSize="20dp"
+                android:fontFamily="@font/ravenpro_medium"
+                ></TextView>
+
         </LinearLayout>
     </RelativeLayout>
 
