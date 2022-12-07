@@ -432,7 +432,7 @@ public class Activity_correct_play extends AppCompatActivity {
                 save();
                 Collections.sort(MemberList);
                 Log.e("test" + MemberList, "");
-                intent.putExtra("correct_play",bundle);
+                intent.putExtra("correct_play", bundle);
                 startActivity(intent);
             }
         }
@@ -445,8 +445,8 @@ public class Activity_correct_play extends AppCompatActivity {
             public void onTick(long l) {
                 count = 0;
                 count++;
-                total_Time=total_Time+count;
-                Log.e("Time : "+total_Time,"");
+                total_Time = total_Time + count;
+                Log.e("Time : " + total_Time, "");
 //                Log.e("1", "2");
                 String StartTimeString = String.valueOf(StartTimeInt);
                 if (StartTimeInt >= 10) {
@@ -543,22 +543,11 @@ public class Activity_correct_play extends AppCompatActivity {
         String email = "";
         myPrefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
         email = myPrefs.getString("Email1", "");
+
 //        MemberList = new ArrayList<>();
-        if (MemberList.size()>=0) {
+        if (MemberList.size() >= 0) {
             Log.e("not null", "asdasd");
             MemberList = MemberList();
-            Log.e("" + MemberList.size(), "size");
-        }
-//        MemberList = new ArrayList<>();
-        Log.e("email", "" + email);
-        Log.e("" + MemberList, "");
-        if (MemberList.size() == 0) {//Neu File Rong thi Add 1 Member
-            Log.e("1", "1");
-            MemberList.add(new member(email, CorrectAnswer, High_Star, total_Time));
-            check = true;
-        }
-        if (MemberList.size() > 0) { //Add 1 Member vao File
-            Log.e("2", "2");
             for (int i = 0; i < MemberList.size(); i++) {
                 Log.e("for", "");
                 Log.e("membername", "" + MemberList.get(i).getName());
@@ -571,6 +560,11 @@ public class Activity_correct_play extends AppCompatActivity {
                     break;
                 }
             }
+            Log.e("" + MemberList.size(), "size");
+        }
+        if (MemberList.size() == 0) {//Neu File Rong thi Add 1 Member
+            MemberList.add(new member(email, CorrectAnswer, High_Star, total_Time));
+            check = true;
         }
         if (MemberList.size() > 10)//Loc file cho gon gang
         {
