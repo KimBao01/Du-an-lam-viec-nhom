@@ -6,17 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 
-public class Mem_Adapter extends BaseAdapter {
+public class Mem_Adapter_Correct extends BaseAdapter {
     ArrayList<member> MemberList;
     Context context;
     int layout;
 
-    public Mem_Adapter(ArrayList<member> memberList, Context context, int layout) {
+    public Mem_Adapter_Correct(ArrayList<member> memberList, Context context, int layout) {
         MemberList = memberList;
         this.context = context;
         this.layout = layout;

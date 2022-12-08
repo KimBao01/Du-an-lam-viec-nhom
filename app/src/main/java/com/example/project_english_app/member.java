@@ -18,12 +18,13 @@ public class member implements Comparable<member> {
         this.Correct_Star = Correct_Star;
         this.Ear_Finish_Time = Ear_Finish_Time;
     }
-
-    public member(int soCau, int Correct_Star, int Ear_Finish_Time) {
-        this.SoCau = soCau;
-        this.Correct_Star = Correct_Star;
+    public member(String name, int SoCau, int Ear_Finish_Time) {
+//        this.id = id;
+        this.name = name;
+        this.SoCau = SoCau;
         this.Ear_Finish_Time = Ear_Finish_Time;
     }
+
 
     public member() {
         this.name = name;
@@ -82,9 +83,14 @@ public class member implements Comparable<member> {
             else return -1;
         } else return -1;
     }
-    public String toString()
+    public String toStringCorrect()
     {
 
         return getName()+" "+getSoCau()+" "+getCorrect_Star()+" "+getEar_Finish_Time();
+    }
+    public String toStringQuiz()
+    {
+
+        return getName()+" "+getSoCau()+" "+getEar_Finish_Time();
     }
 }

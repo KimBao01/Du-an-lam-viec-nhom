@@ -32,8 +32,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.Serializable;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -426,7 +424,7 @@ public class Activity_correct_play extends AppCompatActivity {
 //                Log.e("5","6");
                 finish();
                 Count_Down_Timer.cancel();
-                Intent intent = new Intent(this, Activity_result.class);
+                Intent intent = new Intent(this, Activity_result_Correct.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("CorrectAnswer", CorrectAnswer);
                 save();
@@ -581,7 +579,7 @@ public class Activity_correct_play extends AppCompatActivity {
             fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
             PrintWriter pw = new PrintWriter(fos);
             for (member mb : MemberList) {
-                pw.println(mb.toString());
+                pw.println(mb.toStringCorrect());
             }
 //            edtID.getText().clear();
             Toast.makeText(Activity_correct_play.this, "Saved to " + getFilesDir() + "/" + FILE_NAME, Toast.LENGTH_LONG).show();

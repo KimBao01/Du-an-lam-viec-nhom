@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp">
+
+
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.3"
+                android:background="@drawable/border_radius_listitem"
+                app:tint="#77000000" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/border_radius_listitem" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/TvTop"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_cricle_ranking"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp">
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="110dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/TvName"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_usename"
+                android:gravity="bottom"
+                android:paddingBottom="5dp"
+                android:text="QuocNguyen2002"
+                android:textAllCaps="true"
+                android:textColor="#75C700"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/TvSoCau"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:text="Số câu: 9"
+                android:fontFamily="@font/ravenpro_medium"
+                android:textColor="#8A817C"
+                android:textSize="20dp" />
+            <TextView
+                android:id="@+id/TvTime"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Thời gian : 5s"
+                android:textSize="20dp"
+                android:fontFamily="@font/ravenpro_medium"
+                ></TextView>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout><!--    75C700-->

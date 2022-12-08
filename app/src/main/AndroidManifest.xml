@@ -25,7 +25,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Activity_result"
+            android:name=".Activity_result_Correct"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -105,7 +105,10 @@
         <activity android:name=".Activity_playAgain" />
         <activity android:name=".Activity_Register" />
         <activity android:name=".TagLayout_Answer" />
-        <activity android:name=".Activity_Highscore"></activity>
+        <activity android:name=".Activity_Highscore_Correct"></activity>
+        <activity android:name=".Activity_quiz_chooseQuestion"></activity>
+        <activity android:name=".Activity_Result_Quiz"></activity>
+        <activity android:name=".Activity_highscores_Quiz"></activity>
 
     </application>
 

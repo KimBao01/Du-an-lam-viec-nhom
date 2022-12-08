@@ -1,14 +1,14 @@
 package com.example.project_english_app;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -21,20 +21,20 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-public class Activity_result extends AppCompatActivity {
+public class Activity_Result_Quiz extends AppCompatActivity {
     private PieChart pieChart;
     private Button btnResult, btnNextOneItem;
     int Correct_Answer,Wrong_Answer;
     float Per_Correct_Ans,Per_Wrong_Ans;
-
-    @SuppressLint("MissingInflatedId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_result);
+        setContentView(R.layout.layout_quiz_result);
         AnhXa();
         Intent callerIntent=getIntent();
-        Bundle packageFromCaller= callerIntent.getBundleExtra("correct_play");
+        Bundle packageFromCaller= ((Intent) callerIntent).getBundleExtra("MyPackage");
+
+//        KQ.setText(packageFromCaller.getInt("KQ")+"/"+ packageFromCaller.getInt("Socau"));
         btnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,21 +42,21 @@ public class Activity_result extends AppCompatActivity {
             }
         });
 
-        btnNextOneItem = (Button) findViewById(R.id.btn_nextOneItem);
+        btnNextOneItem = (Button) findViewById(R.id.btn_nextOneItem1);
         btnNextOneItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openActivity_one_item_rank();
             }
         });
-        Correct_Answer = packageFromCaller.getInt("CorrectAnswer");
-//        Log.e("result",""+Correct_Answer);
-        Wrong_Answer = 10-Correct_Answer;
-//        Log.e("result",""+Wrong_Answer);
-        Per_Correct_Ans = (float)Correct_Answer/10;
-//        Log.e("result",""+Per_Correct_Ans);
-        Per_Wrong_Ans = (float)Wrong_Answer/10;
-//        Log.e("result",""+Per_Wrong_Ans);
+        Correct_Answer = packageFromCaller.getInt("KQ");
+        Log.e("result",""+Correct_Answer);
+        Wrong_Answer = packageFromCaller.getInt("Socau")-Correct_Answer;
+        Log.e("result",""+Wrong_Answer);
+        Per_Correct_Ans = (float)Correct_Answer/packageFromCaller.getInt("Socau");
+        Log.e("result",""+Per_Correct_Ans);
+        Per_Wrong_Ans = (float)Wrong_Answer/packageFromCaller.getInt("Socau");
+        Log.e("result",""+Per_Wrong_Ans);
 
 
         setupPieChart();
@@ -115,19 +115,20 @@ public class Activity_result extends AppCompatActivity {
     }
 
     public void openActivity_correct_home() {
-        Intent intent = new Intent(this, Activity_correct_home.class);
+        Intent intent = new Intent(this, Activity_quiz_home.class);
         startActivity(intent);
     }
 
     public void openActivity_one_item_rank() {
-        Intent intent = new Intent(this, Activity_Highscore.class);
+        Intent intent = new Intent(this, Activity_highscores_Quiz.class);
         startActivity(intent);
         finish();
     }
     void AnhXa()
     {
-        btnResult = (Button) findViewById(R.id.btn_result);
+        btnResult = (Button) findViewById(R.id.btn_result1);
         pieChart = findViewById(R.id.activity_main_piechart);
+
 
     }
 }
