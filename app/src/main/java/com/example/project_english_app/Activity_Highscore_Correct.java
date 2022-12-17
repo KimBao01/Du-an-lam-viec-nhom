@@ -25,12 +25,13 @@ public class Activity_Highscore_Correct extends AppCompatActivity {
     ListView Lv_Rank_Member;
     Button BtnBack;
     private static final String FILE_NAME = "rankUpdate.txt";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_highscore);
         AnhXa();
-        MemberAdapter = new Mem_Adapter_Correct(MemberListTemp,this,R.layout.layout_one_item_rank);
+        MemberAdapter = new Mem_Adapter_Correct(MemberListTemp, this, R.layout.layout_one_item_rank);
         Lv_Rank_Member.setAdapter(MemberAdapter);
         Lv_Rank_Member.setDivider(null);
         BtnBack.setOnClickListener(new View.OnClickListener() {
@@ -42,32 +43,30 @@ public class Activity_Highscore_Correct extends AppCompatActivity {
 
 
     }
-    void AnhXa()
-    {
+
+    void AnhXa() {
         MemberList = new ArrayList<>();
         MemberListTemp = new ArrayList<>();
-        Lv_Rank_Member = (ListView)findViewById(R.id.Lv_HighScore);
-        MemberList = MemberList();
+        Lv_Rank_Member = (ListView) findViewById(R.id.Lv_HighScore);
+        MemberList();
         Collections.sort(MemberList);
-        for(int i=0;i<MemberList.size();i++)
-        {
-            if(i==5)
-            {
+        for (int i = 0; i < MemberList.size(); i++) {
+            if (i == 5) {
                 break;
             }
             MemberListTemp.add(MemberList.get(i));
         }
-        Log.e(""+MemberList,"");
-        Log.e(""+MemberList,"");
+        Log.e("" + MemberList, "");
+        Log.e("" + MemberList, "");
         BtnBack = (Button) findViewById(R.id.BtnBack);
     }
 
-    void Display(int i)
-    {
+    void Display(int i) {
 //        load();
     }
-    ArrayList<member> MemberList() {
-        ArrayList<member> getMemberList = new ArrayList<>();
+
+    void MemberList() {
+//        ArrayList<member> getMemberList = new ArrayList<>();
         FileInputStream fis = null;
         try {
             fis = openFileInput(FILE_NAME);
@@ -79,11 +78,11 @@ public class Activity_Highscore_Correct extends AppCompatActivity {
                 if ((text = br.readLine()) != null) {
                     if (text.trim() == " ") continue;
                     String[] list = text.split(" ");
-                    getMemberList.add(new member(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2]), Integer.parseInt(list[3])));
+                    MemberList.add(new member(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2]), Integer.parseInt(list[3])));
 //                    sb.append(text).append("\n");
-                    Log.e("size", "" + getMemberList.size());
+                    Log.e("size", "" + MemberList.size());
                 } else {
-                    return getMemberList;
+                    break;
                 }
 
             }
@@ -108,6 +107,5 @@ public class Activity_Highscore_Correct extends AppCompatActivity {
                 }
             }
         }
-        return null;
     }
 }

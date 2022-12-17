@@ -10,11 +10,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class Mem_Adapter_Quiz extends BaseAdapter {
-    ArrayList<member> MemberList;
+    ArrayList<member_quiz> MemberList;
     Context context;
     int layout;
 
-    public Mem_Adapter_Quiz(ArrayList<member> memberList, Context context, int layout) {
+    public Mem_Adapter_Quiz(ArrayList<member_quiz> memberList, Context context, int layout) {
         MemberList = memberList;
         this.context = context;
         this.layout = layout;
@@ -55,7 +55,7 @@ public class Mem_Adapter_Quiz extends BaseAdapter {
         } else {
             holder = (ViewHolder) view.getTag();
         }
-        member Member = MemberList.get(i);
+        member_quiz Member = MemberList.get(i);
         holder.TvTop.setText(String.valueOf(i+1));
         holder.TvName.setText(Member.getName());
         holder.TvSoCau.setText("Số câu : " + String.valueOf(Member.getSoCau()));

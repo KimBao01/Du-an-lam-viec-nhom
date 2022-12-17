@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -62,6 +63,11 @@ public class Activity_correct_play extends AppCompatActivity {
     boolean Frag_Easy[] = new boolean[1000], Frag_Medium[] = new boolean[1000], Frag_Hard[] = new boolean[1000], CheckAnswer = false, page = false;
     CountDownTimer Count_Down_Timer;
     private static final String FILE_NAME = "rankUpdate.txt";
+    MediaPlayer Media_Correct_Answer;
+    MediaPlayer Media_Win;
+    MediaPlayer Media_Lose;
+    MediaPlayer Media_False_Answer;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -106,6 +112,7 @@ public class Activity_correct_play extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (txtAnswer.getText().toString().trim().equals(L.get(pos).answer.trim())) {
+                    Media_Correct_Answer.start();
                     Arr_MaintainAnswer.add(1);
                     if (Arr_MaintainAnswer.size() > 2) {
                         Check_Maintain_Answer();
@@ -156,6 +163,10 @@ public class Activity_correct_play extends AppCompatActivity {
 
 
     public void AnhXa() {
+        Media_False_Answer =  MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_wrong_answer);
+        Media_Correct_Answer = MediaPlayer.create(Activity_correct_play.this,R.raw.duolingo_true_anwser);
+        Media_Lose = MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_lose);
+        Media_Win = MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_win);
         total_Time = 0;
         MemberList = new ArrayList<>();
         txtCorrectAnswer = (TextView) findViewById(R.id.CorrectAnswer);
@@ -397,11 +408,11 @@ public class Activity_correct_play extends AppCompatActivity {
             Log.e("pos " + pos, "asd");
             if (pos == 0) {
                 Display(pos);
-                CountDown();
+                StartCountDown();
             } else {
                 Count_Down_Timer.cancel();
                 Display(pos);
-                CountDown();
+                StartCountDown();
             }
             ;//Hiển thị câu hỏi kế tiếp
 //            if (pos >= L.size()) {
@@ -424,11 +435,15 @@ public class Activity_correct_play extends AppCompatActivity {
 //                Log.e("5","6");
                 finish();
                 Count_Down_Timer.cancel();
+                Media_Correct_Answer.stop();
+                Media_Correct_Answer.release();
+                Media_Win.start();
                 Intent intent = new Intent(this, Activity_result_Correct.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("CorrectAnswer", CorrectAnswer);
+                MemberList();
                 save();
-                Collections.sort(MemberList);
+//                Collections.sort(MemberList);
                 Log.e("test" + MemberList, "");
                 intent.putExtra("correct_play", bundle);
                 startActivity(intent);
@@ -436,7 +451,7 @@ public class Activity_correct_play extends AppCompatActivity {
         }
     }
 
-    void CountDown() {
+    void StartCountDown() {
 
         Count_Down_Timer = new CountDownTimer(31000, 1000) {
             @Override
@@ -459,6 +474,7 @@ public class Activity_correct_play extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                Media_False_Answer.start();
                 total_Time += count;
                 StartTimeInt = 30;
                 Arr_MaintainAnswer.add(-1);
@@ -505,12 +521,14 @@ public class Activity_correct_play extends AppCompatActivity {
                         break;
                     } else if (Arr_MaintainAnswer.get(posIndex) == -1) {
                         if (txtCounterStar.getText().toString().equals("0")) {
+
 //                            Log.e("3","4");
                             page = true;
                             Count_Down_Timer.cancel();
                             finish();
                             Intent intent = new Intent(Activity_correct_play.this, Activity_playAgain.class);
                             startActivity(intent);
+                            Media_Lose.start();
 //                            onRestart();
 //                            finish();
                             break;
@@ -543,34 +561,35 @@ public class Activity_correct_play extends AppCompatActivity {
         email = myPrefs.getString("Email1", "");
 
 //        MemberList = new ArrayList<>();
-        if (MemberList.size() >= 0) {
-            Log.e("not null", "asdasd");
-            MemberList = MemberList();
-            for (int i = 0; i < MemberList.size(); i++) {
-                Log.e("for", "");
-                Log.e("membername", "" + MemberList.get(i).getName());
-                Log.e("email", "" + email);
-                if (MemberList.get(i).getName().trim().compareTo(email.trim()) == 0) {
-                    Log.e("name", "");
-                    MemberList.remove(i);
-                    MemberList.add(i, new member(email, CorrectAnswer, High_Star, total_Time));
-                    check = true;
-                    break;
-                }
+//        if (MemberList.size() >= 0) {
+//            Log.e("not null", "asdasd");
+//            MemberList = MemberList();
+//
+//            Log.e("" + MemberList.size(), "size");
+//        }
+        for (int i = 0; i < MemberList.size(); i++) {
+            Log.e("for", "");
+            Log.e("membername", "" + MemberList.get(i).getName());
+            Log.e("email", "" + email);
+            if (MemberList.get(i).getName().trim().compareTo(email.trim()) == 0) {
+                Log.e("name", "");
+                MemberList.remove(i);
+                MemberList.add(i, new member(email, CorrectAnswer, High_Star, total_Time));
+                check = true;
+                break;
             }
-            Log.e("" + MemberList.size(), "size");
         }
         if (MemberList.size() == 0) {//Neu File Rong thi Add 1 Member
             MemberList.add(new member(email, CorrectAnswer, High_Star, total_Time));
             check = true;
         }
-        if (MemberList.size() > 10)//Loc file cho gon gang
-        {
-            for (int i = MemberList().size() - 1; i > 5; i--)//5 : 0 -> 4
-            {
-                MemberList.remove(i);
-            }
-        }
+//        if (MemberList.size() > 10)//Loc file cho gon gang
+//        {
+//            for (int i = MemberList().size() - 1; i > 5; i--)//5 : 0 -> 4
+//            {
+//                MemberList.remove(i);
+//            }
+//        }
         if (!check) {
             MemberList.add(new member(email, CorrectAnswer, High_Star, total_Time));
         }
@@ -599,9 +618,9 @@ public class Activity_correct_play extends AppCompatActivity {
         }
     }
 
-    ArrayList<member> MemberList() {
+    void MemberList() {
         Log.e("asdjklasdjlasdjk", "asdasdasdasdasdsad");
-        ArrayList<member> getMemberList = new ArrayList<>();
+//        ArrayList<member> getMemberList = new ArrayList<>();
         FileInputStream fis = null;
         try {
             fis = openFileInput(FILE_NAME);
@@ -613,11 +632,11 @@ public class Activity_correct_play extends AppCompatActivity {
                 if ((text = br.readLine()) != null) {
                     if (text.trim() == " ") continue;
                     String[] list = text.split(" ");
-                    getMemberList.add(new member(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2]), Integer.parseInt(list[3])));
+                    MemberList.add(new member(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2]), Integer.parseInt(list[3])));
 //                    sb.append(text).append("\n");
-                    Log.e("size", "" + getMemberList.size());
+                    Log.e("size", "" + MemberList.size());
                 } else {
-                    return getMemberList;
+                    break;
                 }
 
             }
@@ -642,7 +661,6 @@ public class Activity_correct_play extends AppCompatActivity {
                 }
             }
         }
-        return null;
     }
 
 

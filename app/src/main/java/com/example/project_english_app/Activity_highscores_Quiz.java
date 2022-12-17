@@ -19,8 +19,8 @@ import java.util.Collections;
 
 public class Activity_highscores_Quiz extends AppCompatActivity {
 
-    ArrayList<member> MemberList;
-    ArrayList<member> MemberListTemp;
+    ArrayList<member_quiz> MemberList;
+    ArrayList<member_quiz>MemberListTem;
     Mem_Adapter_Quiz MemberAdapter;
     ListView Lv_Rank_Member;
     Button BtnBack;
@@ -30,7 +30,7 @@ public class Activity_highscores_Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_highscore_quiz);
         AnhXa();
-        MemberAdapter = new Mem_Adapter_Quiz(MemberListTemp,this,R.layout.dong_rank_member_quiz);
+        MemberAdapter = new Mem_Adapter_Quiz(MemberListTem,this,R.layout.dong_rank_member_quiz);
         Lv_Rank_Member.setAdapter(MemberAdapter);
         Lv_Rank_Member.setDivider(null);
         BtnBack.setOnClickListener(new View.OnClickListener() {
@@ -45,9 +45,9 @@ public class Activity_highscores_Quiz extends AppCompatActivity {
     void AnhXa()
     {
         MemberList = new ArrayList<>();
-        MemberListTemp = new ArrayList<>();
+        MemberListTem = new ArrayList<>();
         Lv_Rank_Member = (ListView)findViewById(R.id.Lv_HighScore);
-        MemberList = MemberList();
+        MemberList();
         Collections.sort(MemberList);
         for(int i=0;i<MemberList.size();i++)
         {
@@ -55,7 +55,7 @@ public class Activity_highscores_Quiz extends AppCompatActivity {
             {
                 break;
             }
-            MemberListTemp.add(MemberList.get(i));
+            MemberListTem.add(MemberList.get(i));
         }
         Log.e(""+MemberList,"");
         BtnBack = (Button) findViewById(R.id.BtnBack);
@@ -65,8 +65,8 @@ public class Activity_highscores_Quiz extends AppCompatActivity {
     {
 //        load();
     }
-    ArrayList<member> MemberList() {
-        ArrayList<member> getMemberList = new ArrayList<>();
+    void MemberList() {
+//        ArrayList<member> getMemberList = new ArrayList<>();
         FileInputStream fis = null;
         try {
             fis = openFileInput(FILE_NAME);
@@ -78,13 +78,12 @@ public class Activity_highscores_Quiz extends AppCompatActivity {
                 if ((text = br.readLine()) != null) {
                     if (text.trim() == " ") continue;
                     String[] list = text.split(" ");
-                    getMemberList.add(new member(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2])));
+                    MemberList.add(new member_quiz(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2])));
 //                    sb.append(text).append("\n");
-                    Log.e("size", "" + getMemberList.size());
+                    Log.e("size", "" + MemberList.size());
                 } else {
-                    return getMemberList;
+                    break;
                 }
-
             }
 
 //            Log.e("test",""+sb.toString());
@@ -107,6 +106,5 @@ public class Activity_highscores_Quiz extends AppCompatActivity {
                 }
             }
         }
-        return null;
     }
 }

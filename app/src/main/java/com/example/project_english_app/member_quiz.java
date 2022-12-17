@@ -4,21 +4,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class member implements Comparable<member> {
+public class member_quiz implements Comparable<member_quiz> {
     //    int id;
     String name;
     int SoCau;
     int Correct_Star;
     int Ear_Finish_Time;
 
-    public member(String name, int SoCau, int Correct_Star, int Ear_Finish_Time) {
+    public member_quiz(String name, int SoCau, int Correct_Star, int Ear_Finish_Time) {
 //        this.id = id;
         this.name = name;
         this.SoCau = SoCau;
         this.Correct_Star = Correct_Star;
         this.Ear_Finish_Time = Ear_Finish_Time;
     }
-    public member(String name, int SoCau, int Ear_Finish_Time) {
+    public member_quiz(String name, int SoCau, int Ear_Finish_Time) {
 //        this.id = id;
         this.name = name;
         this.SoCau = SoCau;
@@ -26,7 +26,7 @@ public class member implements Comparable<member> {
     }
 
 
-    public member() {
+    public member_quiz() {
         this.name = name;
         this.SoCau = SoCau;
         this.Correct_Star = Correct_Star;
@@ -73,24 +73,7 @@ public class member implements Comparable<member> {
         Correct_Star = correct_Star;
     }
 
-    @Override
-    public int compareTo(member member) {
-        if (SoCau < member.SoCau) {
-            return 1;
-        } else if (SoCau == member.SoCau) {
-            if(Correct_Star < member.Correct_Star)
-            {
-                return 1;
-            }
-            else if(Correct_Star == member.Correct_Star)
-            {
-                if (Ear_Finish_Time > member.Ear_Finish_Time) return 1;
-                else if (Ear_Finish_Time == member.Ear_Finish_Time) return 0;
-                else return -1;
-            }
-            else return -1;
-        } else return -1;
-    }
+
     public String toStringCorrect()
     {
 
@@ -100,5 +83,16 @@ public class member implements Comparable<member> {
     {
 
         return getName()+" "+getSoCau()+" "+getEar_Finish_Time();
+    }
+
+    @Override
+    public int compareTo(member_quiz member_quiz) {
+        if (SoCau < member_quiz.SoCau) {
+            return 1;
+        } else if (SoCau == member_quiz.SoCau) {
+            if (Ear_Finish_Time > member_quiz.Ear_Finish_Time) return 1;
+            else if (Ear_Finish_Time == member_quiz.Ear_Finish_Time) return 0;
+            else return -1;
+        } else return -1;
     }
 }

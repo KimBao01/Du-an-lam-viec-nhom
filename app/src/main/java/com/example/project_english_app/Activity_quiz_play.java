@@ -1,4 +1,5 @@
 package com.example.project_english_app;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -41,60 +42,61 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-class QuestionNare
-{
+class QuestionNare {
     public String ID;
     public String Q;
     public String AnswerA, AnswerB, AnswerC, AnswerD, Answer;
 
 }
-public class Activity_quiz_play extends Activity
-{
+
+public class Activity_quiz_play extends Activity {
     //    Activity_quiz_chooseQuestion Au = new Activity_quiz_chooseQuestion() ;
-    int AA=0;
+    int AA = 0;
     private Button btn;
     TextView Cauhoi, Ketqua;
     RadioGroup RG;
     Button BT;
     Button Skip;
-    ArrayList<member> MemberList;
+    ArrayList<member_quiz> MemberList;
     private static final long COUNTDOWN_IN_MILLIS = 30000;
     private TextView textViewCountDown;
     private ColorStateList textColorDefaultCd;
     private CountDownTimer countDownTimer;
     private long timeLeftInMillis;
+    MediaPlayer Media_Correct_Answer;
+    MediaPlayer Media_Win;
+    MediaPlayer Media_Lose;
+    MediaPlayer Media_False_Answer;
 
 
-
-    int kq = 0;
+    int score = 0;
     RadioButton A, B, C, D;
     int pos = 0;//vị trí câu hỏi trong danh sách
     //lưu số câu trả lời đúng
     ArrayList<QuestionNare> L = new ArrayList(); //chứa câu hỏi
     int HighScore = 0;
-    int High1 =0, High2 =0 , High3 =0 , High4 =0 , High5 =0;
+    int High1 = 0, High2 = 0, High3 = 0, High4 = 0, High5 = 0;
     int total_Time = 0;
     private static final String FILE_NAME = "rankUpdateQuiz.txt";
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
 
-        Intent callerIntent=getIntent();
-        Bundle packageFromCaller= callerIntent.getBundleExtra("MyPackage1");
-        AA = packageFromCaller.getInt("SL1") ;
-
-
-
-
+        Intent callerIntent = getIntent();
+        Bundle packageFromCaller = callerIntent.getBundleExtra("MyPackage1");
+        AA = packageFromCaller.getInt("SL1");
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.layout_quiz_play);
+        Media_False_Answer =  MediaPlayer.create(Activity_quiz_play.this,R.raw.doulingo_wrong_answer);
+        Media_Correct_Answer = MediaPlayer.create(Activity_quiz_play.this,R.raw.duolingo_true_anwser);
+        Media_Lose = MediaPlayer.create(Activity_quiz_play.this,R.raw.doulingo_lose);
+        Media_Win = MediaPlayer.create(Activity_quiz_play.this,R.raw.doulingo_win);
         MemberList = new ArrayList<>();
         Cauhoi = (TextView) findViewById(R.id.txtCauhoi);
-        Ketqua = (TextView)findViewById(R.id.txt_ketqua);
+        Ketqua = (TextView) findViewById(R.id.txt_ketqua);
         RG = (RadioGroup) findViewById(R.id.radioGroup);
         BT = (Button) findViewById(R.id.btn_Answer);
-        Skip = (Button) findViewById(R.id.btn_Skip) ;
+        Skip = (Button) findViewById(R.id.btn_Skip);
         textViewCountDown = findViewById(R.id.textTimer);
         A = (RadioButton) findViewById(R.id.rb1);
         B = (RadioButton) findViewById(R.id.rb2);
@@ -109,47 +111,81 @@ public class Activity_quiz_play extends Activity
         Display(pos);
 
         BT.setOnClickListener(new View.OnClickListener() {
-
             @Override
-
             public void onClick(View v) {
-                boolean a = false ;
+                boolean a = false;
                 int idCheck = RG.getCheckedRadioButtonId();
+                countDownTimer.cancel();
 //                    onDestroy();
 //                    timeLeftInMillis = COUNTDOWN_IN_MILLIS;
 //                    startCountDown();
-
-
                 switch (idCheck) {
                     case R.id.rb1:
-                        if (L.get(pos).Answer.compareTo("A") == 0) kq = kq + 1;
+                        if (L.get(pos).Answer.compareTo("A") == 0) {
+                            score = score + 1;
+                            Media_Correct_Answer.start();
+                        }
+                        else
+                        {
+                            Media_False_Answer.start();
+                        }
                         a = true;
                         break;
                     case R.id.rb2:
-                        if (L.get(pos).Answer.compareTo("B") == 0) kq = kq + 1;
-                        a = true ;
+                        if (L.get(pos).Answer.compareTo("B") == 0) {
+                            score = score + 1;
+                            Media_Correct_Answer.start();
+                        }
+                        else
+                        {
+                            Media_False_Answer.start();
+                        }
+                        a = true;
                         break;
                     case R.id.rb3:
-                        if (L.get(pos).Answer.compareTo("C") == 0) kq = kq + 1;
-                        a = true ;
+                        if (L.get(pos).Answer.compareTo("C") == 0){
+                            score = score + 1;
+                            Media_Correct_Answer.start();
+                        }
+                        else
+                        {
+                            Media_False_Answer.start();
+                        }
+                        a = true;
                         break;
                     case R.id.rb4:
-                        if (L.get(pos).Answer.compareTo("D") == 0) kq = kq + 1;
-                        a = true ;
+                        if (L.get(pos).Answer.compareTo("D") == 0) {
+                            score = score + 1;
+                            Media_Correct_Answer.start();
+                        }
+                        else
+                        {
+                            Media_False_Answer.start();
+                        }
+                        a = true;
                         break;
-
                 }
-                if(a == true){
+                if (a == true) {
                     pos++;
                     onDestroy();
                     timeLeftInMillis = COUNTDOWN_IN_MILLIS;
                     startCountDown();
 
                     if (pos >= L.size()) {
+                        if(Media_Correct_Answer.isPlaying())
+                        {
+                            Media_Correct_Answer.stop();
+                        }
+                        if(Media_False_Answer.isPlaying())
+                        {
+                            Media_False_Answer.stop();
+                        }
+                        Media_Win.start();
                         Intent intent = new Intent(Activity_quiz_play.this, Activity_Result_Quiz.class);
                         Bundle bundle = new Bundle();
-                        bundle.putInt("KQ", kq);
+                        bundle.putInt("KQ", score);
                         bundle.putInt("Socau", pos);
+                        MemberList();
                         save();
                         intent.putExtra("MyPackage", bundle);
                         startActivity(intent);
@@ -164,8 +200,8 @@ public class Activity_quiz_play extends Activity
 
 //                    startCountDown();
                         Display(pos); //Hiển thị câu hỏi kế tiếp
-                    }}
-
+                    }
+                }
             }
         });
 
@@ -179,38 +215,48 @@ public class Activity_quiz_play extends Activity
                 startCountDown();
 
                 if (pos >= L.size()) {
+                    if(Media_Correct_Answer.isPlaying())
+                    {
+                        Media_Correct_Answer.stop();
+                    }
+                    if(Media_False_Answer.isPlaying())
+                    {
+                        Media_False_Answer.stop();
+                    }
+                    Media_Win.start();
                     Intent intent = new Intent(Activity_quiz_play.this, Activity_Result_Quiz.class);
                     Bundle bundle = new Bundle();
-                    bundle.putInt("KQ", kq);
+                    bundle.putInt("KQ", score);
                     bundle.putInt("Socau", pos);
                     intent.putExtra("MyPackage", bundle);
+                    MemberList();
                     save();
                     startActivity(intent);
-                    if (kq > High1) {
-                        int change = High1 ;
-                        High1 = kq;
-                        kq = change ;
+                    if (score > High1) {
+                        int change = High1;
+                        High1 = score;
+                        score = change;
 
                     }
-                    if (kq >High2){
-                        int change = High2 ;
-                        High2 = kq;
-                        kq = change;
+                    if (score > High2) {
+                        int change = High2;
+                        High2 = score;
+                        score = change;
                     }
-                    if (kq >High3){
+                    if (score > High3) {
                         int change = High3;
-                        High3 = kq;
-                        kq = change;
+                        High3 = score;
+                        score = change;
                     }
-                    if (kq > High4){
-                        int change =High4;
-                        High4 = kq;
-                        kq = change;
+                    if (score > High4) {
+                        int change = High4;
+                        High4 = score;
+                        score = change;
                     }
-                    if (kq > High5){
+                    if (score > High5) {
                         int change = High5;
-                        High5 = kq;
-                        kq = change;
+                        High5 = score;
+                        score = change;
                     }
                     SaveHighScore();
                     finish();
@@ -220,7 +266,8 @@ public class Activity_quiz_play extends Activity
 
 //                    startCountDown();
                     Display(pos); //Hiển thị câu hỏi kế tiếp
-                }}
+                }
+            }
         });
 
         btn = (Button) findViewById(R.id.btn_Quiz_goBack);
@@ -233,35 +280,44 @@ public class Activity_quiz_play extends Activity
 
     }
 
-    private void startCountDown()
-    {
-        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000)
-        {
+    private void startCountDown() {
+        countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
-            public void onTick(long millisUntilFinished)
-            {
+            public void onTick(long millisUntilFinished) {
 
                 timeLeftInMillis = millisUntilFinished;
                 updateCountDownText(timeLeftInMillis);
             }
 
             @Override
-            public void onFinish()
-            {
-                timeLeftInMillis=30;
+            public void onFinish() {
+                if(Media_Correct_Answer.isPlaying())
+                {
+                    Media_Correct_Answer.stop();
+                }
+                Media_False_Answer.start();
+                timeLeftInMillis = 30;
 //                Toast.makeText(Activity_quiz_play.this, "Het gio", Toast.LENGTH_SHORT).show();
                 pos++;
                 if (pos >= L.size()) {
+                    if(Media_Correct_Answer.isPlaying())
+                    {
+                        Media_Correct_Answer.stop();
+                    }
+                    if(Media_False_Answer.isPlaying())
+                    {
+                        Media_False_Answer.stop();
+                    }
+                    Media_Win.start();
                     Intent intent = new Intent(Activity_quiz_play.this, Activity_Result_Quiz.class);
                     Bundle bundle = new Bundle();
-                    bundle.putInt("KQ", kq);
+                    bundle.putInt("KQ", score);
                     bundle.putInt("Socau", pos);
+                    MemberList();
                     save();
                     intent.putExtra("MyPackage", bundle);
                     startActivity(intent);
-                }
-                else
-                {
+                } else {
                     Display(pos);
                     timeLeftInMillis = COUNTDOWN_IN_MILLIS;
                     startCountDown();
@@ -271,12 +327,11 @@ public class Activity_quiz_play extends Activity
         }.start();
     }
 
-    private void updateCountDownText(long timeLeftInMillis)
-    {
+    private void updateCountDownText(long timeLeftInMillis) {
         int count = 0;
         count++;
-        total_Time+=count;
-        Log.e("Count",""+total_Time);
+        total_Time += count;
+        Log.e("Count", "" + total_Time);
         int minutes = (int) (timeLeftInMillis / 1000) / 60;
         int seconds = (int) (timeLeftInMillis / 1000) % 60;
 
@@ -284,37 +339,32 @@ public class Activity_quiz_play extends Activity
 
         textViewCountDown.setText(timeFormatted);
 
-        if (timeLeftInMillis < 10000)
-        {
+        if (timeLeftInMillis < 10000) {
             textViewCountDown.setTextColor(Color.RED);
-        }
-        else
-        {
+        } else {
             textViewCountDown.setTextColor(textColorDefaultCd);
         }
     }
 
-    public void gobackAcivity_quiz_home()
-    {
+    public void gobackAcivity_quiz_home() {
+        countDownTimer.cancel();
         Intent intent = new Intent(this, Activity_quiz_home.class);
         startActivity(intent);
     }
 
-    void Display(int i)
-    {
+    void Display(int i) {
 
         Cauhoi.setText(L.get(i).Q);
         A.setText(L.get(i).AnswerA);
         B.setText(L.get(i).AnswerB);
         C.setText(L.get(i).AnswerC);
         D.setText(L.get(i).AnswerD);
-        Ketqua.setText("Câu đúng:" + kq);
+        Ketqua.setText("Câu đúng:" + score);
         RG.clearCheck(); //xóa checked
     }
-    void ReadData()
-    {
-        try
-        {
+
+    void ReadData() {
+        try {
             DocumentBuilderFactory DBF = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = DBF.newDocumentBuilder();
             InputStream in = getAssets().open("data.xml");
@@ -322,15 +372,15 @@ public class Activity_quiz_play extends Activity
             Element root = doc.getDocumentElement();//lấy tag Root
             NodeList list = root.getChildNodes();// lấy toàn bộ node con của Root
 //            double b = Au.A/1;
-            for (int i = 0; i < AA*2; i++)
+            for (int i = 0; i < AA * 2; i++)
 //                list.getLength()
+
 
 //                list.getLength()
             {// duyệt từ node đầu tiên cho tới
-                Random a ;
+                Random a;
                 Node node = list.item(i);// mỗi lần duyệt thì lấy ra 1 node
-                if (node instanceof Element)
-                {
+                if (node instanceof Element) {
                     Element Item = (Element) node;// lấy được tag Item
                     NodeList listChild = Item.getElementsByTagName("ID");
                     String ID = listChild.item(0).getTextContent();//lấy nội dung của tag ID
@@ -355,13 +405,12 @@ public class Activity_quiz_play extends Activity
                     Q1.AnswerD = AnswerD;
                     Q1.Answer = Answer;
                     L.add(Q1);
-                };
+                }
+                ;
             }
-        } catch (ParserConfigurationException e)
-        {
+        } catch (ParserConfigurationException e) {
             e.printStackTrace();
-        } catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (SAXException e) {
             e.printStackTrace();
@@ -370,25 +419,25 @@ public class Activity_quiz_play extends Activity
         }
         Collections.shuffle(L);
     }
-    void LoadHighScore()
-    {
+
+    void LoadHighScore() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyData",
                 Context.MODE_PRIVATE);
-        High1 = sharedPreferences.getInt("H",0);
-        High2 = sharedPreferences.getInt("C",0);
-        High3 = sharedPreferences.getInt("B",0);
-        High4 = sharedPreferences.getInt("D",0);
-        High5 = sharedPreferences.getInt("Z",0);
+        High1 = sharedPreferences.getInt("H", 0);
+        High2 = sharedPreferences.getInt("C", 0);
+        High3 = sharedPreferences.getInt("B", 0);
+        High4 = sharedPreferences.getInt("D", 0);
+        High5 = sharedPreferences.getInt("Z", 0);
     }
-    void SaveHighScore()
-    {
-        SharedPreferences sharedPreferences = getSharedPreferences("MyData",Context.MODE_PRIVATE);
+
+    void SaveHighScore() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("H",High1);
-        editor.putInt("C",High2);
-        editor.putInt("B",High3);
-        editor.putInt("D",High4);
-        editor.putInt("Z",High5);
+        editor.putInt("H", High1);
+        editor.putInt("C", High2);
+        editor.putInt("B", High3);
+        editor.putInt("D", High4);
+        editor.putInt("Z", High5);
 //        editor.putInt("H",0);
 //        editor.putInt("C",0);
 //        editor.putInt("B",0);
@@ -398,24 +447,25 @@ public class Activity_quiz_play extends Activity
 
         editor.apply();
     }
-    void editscore(){
-        SharedPreferences sharedPreferences = getSharedPreferences("MyData",Context.MODE_PRIVATE);
+
+    void editscore() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("H",0);
-        editor.putInt("C",0);
-        editor.putInt("B",0);
-        editor.putInt("D",0);
-        editor.putInt("Z",0);
+        editor.putInt("H", 0);
+        editor.putInt("C", 0);
+        editor.putInt("B", 0);
+        editor.putInt("D", 0);
+        editor.putInt("Z", 0);
     }
+
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
-        if (countDownTimer != null)
-        {
+        if (countDownTimer != null) {
             countDownTimer.cancel();
         }
     }
+
     void save() {
         boolean check = false;
         SharedPreferences myPrefs;
@@ -424,42 +474,43 @@ public class Activity_quiz_play extends Activity
         email = myPrefs.getString("Email1", "");
 
 //        MemberList = new ArrayList<>();
-        if (MemberList.size() >= 0) {
-            Log.e("not null", "asdasd");
-            MemberList = MemberList();
-            for (int i = 0; i < MemberList.size(); i++) {
-                Log.e("for", "");
-                Log.e("membername", "" + MemberList.get(i).getName());
-                Log.e("email", "" + email);
-                if (MemberList.get(i).getName().trim().compareTo(email.trim()) == 0) {
-                    Log.e("name", "");
-                    MemberList.remove(i);
-                    MemberList.add(i, new member(email, kq, total_Time));
-                    check = true;
-                    break;
-                }
+//        if (MemberList.size() >= 0) {
+//            Log.e("not null", "asdasd");
+//            MemberList = MemberList();
+//
+//            Log.e("" + MemberList.size(), "size");
+//        }
+        for (int i = 0; i < MemberList.size(); i++) {
+            Log.e("for", "");
+            Log.e("membername", "" + MemberList.get(i).getName());
+            Log.e("email", "" + email);
+            if (MemberList.get(i).getName().trim().compareTo(email.trim()) == 0) {
+                Log.e("name", "");
+                MemberList.remove(i);
+                MemberList.add(i, new member_quiz(email, score, total_Time));
+                check = true;
+                break;
             }
-            Log.e("" + MemberList.size(), "size");
         }
         if (MemberList.size() == 0) {//Neu File Rong thi Add 1 Member
-            MemberList.add(new member(email, kq,total_Time));
+            MemberList.add(new member_quiz(email, score, total_Time));
             check = true;
         }
-        if (MemberList.size() > 10)//Loc file cho gon gang
-        {
-            for (int i = MemberList().size() - 1; i > 5; i--)//5 : 0 -> 4
-            {
-                MemberList.remove(i);
-            }
-        }
+//        if (MemberList.size() > 10)//Loc file cho gon gang
+//        {
+//            for (int i = MemberList().size() - 1; i > 5; i--)//5 : 0 -> 4
+//            {
+//                MemberList.remove(i);
+//            }
+//        }
         if (!check) {
-            MemberList.add(new member(email, kq,total_Time));
+            MemberList.add(new member_quiz(email, score, total_Time));
         }
         FileOutputStream fos = null;
         try {
             fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
             PrintWriter pw = new PrintWriter(fos);
-            for (member mb : MemberList) {
+            for (member_quiz mb : MemberList) {
                 pw.println(mb.toStringQuiz());
             }
 //            edtID.getText().clear();
@@ -480,9 +531,9 @@ public class Activity_quiz_play extends Activity
         }
     }
 
-    ArrayList<member> MemberList() {
+    void MemberList() {
         Log.e("asdjklasdjlasdjk", "asdasdasdasdasdsad");
-        ArrayList<member> getMemberList = new ArrayList<>();
+//        ArrayList<member> getMemberList = new ArrayList<>();
         FileInputStream fis = null;
         try {
             fis = openFileInput(FILE_NAME);
@@ -494,11 +545,11 @@ public class Activity_quiz_play extends Activity
                 if ((text = br.readLine()) != null) {
                     if (text.trim() == " ") continue;
                     String[] list = text.split(" ");
-                    getMemberList.add(new member(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2])));
+                    MemberList.add(new member_quiz(list[0], Integer.parseInt(list[1]), Integer.parseInt(list[2])));
 //                    sb.append(text).append("\n");
-                    Log.e("size", "" + getMemberList.size());
+                    Log.e("size", "" + MemberList.size());
                 } else {
-                    return getMemberList;
+                    break;
                 }
 
             }
@@ -523,7 +574,6 @@ public class Activity_quiz_play extends Activity
                 }
             }
         }
-        return null;
     }
 
 }
