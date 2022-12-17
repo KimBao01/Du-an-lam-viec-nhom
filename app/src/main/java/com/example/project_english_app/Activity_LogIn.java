@@ -46,41 +46,7 @@ public class Activity_LogIn extends AppCompatActivity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = Edt_Email.getText().toString().trim();
-                String pass = Edt_Pass.getText().toString().trim();
-                if (email.isEmpty()) {
-                    Edt_Email.setError("Email cannot be empty");
-                }
-                if (pass.isEmpty()) {
-                    Edt_Pass.setError("Password cannot be empty ");
-                } else if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    if (!pass.isEmpty()) {
-                        firebase_Auth.signInWithEmailAndPassword(email, pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                String[] Email_Split = email.split("@");
-                                Toast.makeText(Activity_LogIn.this, "Login Successful", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(Activity_LogIn.this, Activity_menu.class);
-                                SharedPreferences myPrefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
-                                SharedPreferences.Editor prefsEditor;
-                                prefsEditor = myPrefs.edit();
-                                prefsEditor.putString("Email1", Email_Split[0]);
-                                prefsEditor.commit();
-                                Log.e("Email", "" + Email_Split[0]);
-//                                bundle.putString("email1",Email_Split[0]);
-//                                IntentLogin.putExtra("Login",bundle);
-                                startActivity(intent);
-                                finish();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(Activity_LogIn.this, "Login Failed", Toast.LENGTH_LONG);
-                            }
-                        });
-                    }
-                }
-
+                Log_in_User();
             }
         });
 
@@ -153,4 +119,42 @@ public class Activity_LogIn extends AppCompatActivity {
         btn_Login = (Button) findViewById(R.id.loginButton);
         signinRes = (Button) findViewById(R.id.registerPage);
     }
+    void Log_in_User()
+    {
+        String email = Edt_Email.getText().toString().trim();
+        String pass = Edt_Pass.getText().toString().trim();
+        if (email.isEmpty()) {
+            Edt_Email.setError("Email cannot be empty");
+        }
+        if (pass.isEmpty()) {
+            Edt_Pass.setError("Password cannot be empty ");
+        } else if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            if (!pass.isEmpty()) {
+                firebase_Auth.signInWithEmailAndPassword(email, pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        String[] Email_Split = email.split("@");
+                        Toast.makeText(Activity_LogIn.this, "Login Successful", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Activity_LogIn.this, Activity_menu.class);
+                        SharedPreferences myPrefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor prefsEditor;
+                        prefsEditor = myPrefs.edit();
+                        prefsEditor.putString("Email1", Email_Split[0]);
+                        prefsEditor.commit();
+                        Log.e("Email", "" + Email_Split[0]);
+//                                bundle.putString("email1",Email_Split[0]);
+//                                IntentLogin.putExtra("Login",bundle);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Activity_LogIn.this, "Login Failed", Toast.LENGTH_LONG);
+                    }
+                });
+            }
+        }
+    }
+
 }

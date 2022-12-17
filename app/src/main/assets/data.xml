@@ -38,7 +38,7 @@
     </Item>
     <Item>
         <ID>5</ID>
-        <Question>It is verry important for you... get well</Question>
+        <Question>It is very important for you... get well</Question>
         <AnswerA>for</AnswerA>
         <AnswerB>with</AnswerB>
         <AnswerC>in</AnswerC>
@@ -47,7 +47,7 @@
     </Item>
     <Item>
         <ID>6</ID>
-        <Question>The weather is .... </Question>
+        <Question>The weather is ....</Question>
         <AnswerA>wet</AnswerA>
         <AnswerB>heavy</AnswerB>
         <AnswerC>heard</AnswerC>
@@ -69,7 +69,7 @@
         <AnswerA>go shopping</AnswerA>
         <AnswerB>shopping</AnswerB>
         <AnswerC>shop</AnswerC>
-        <AnswerD>shopping to </AnswerD>
+        <AnswerD>shopping to</AnswerD>
         <Answer>B</Answer>
     </Item>
     <Item>
@@ -83,7 +83,7 @@
     </Item>
     <Item>
         <ID>10</ID>
-        <Question> My sister always hopes _____ to the headmaster by my parents.</Question>
+        <Question>My sister always hopes ___ to the headmaster by my parents.</Question>
         <AnswerA>being introduced</AnswerA>
         <AnswerB>to be introduced</AnswerB>
         <AnswerC>to introduce</AnswerC>
@@ -92,17 +92,17 @@
     </Item>
     <Item>
         <ID>11</ID>
-        <Question>Do you mind _______ me ____________this computer?.</Question>
+        <Question>Do you mind _____ me ____________this computer?.</Question>
         <AnswerA>help/fixing</AnswerA>
-        <AnswerB> helping/ fixing</AnswerB>
-        <AnswerC>helping/fix </AnswerC>
+        <AnswerB>helping/ fixing</AnswerB>
+        <AnswerC>helping/fix</AnswerC>
         <AnswerD>to help/ to fix</AnswerD>
         <Answer>C</Answer>
     </Item>
     <Item>
         <ID>12</ID>
-        <Question>It’s possible ________ a train across Canada.</Question>
-        <AnswerA>take  </AnswerA>
+        <Question>It’s possible ______ a train across Canada.</Question>
+        <AnswerA>take</AnswerA>
         <AnswerB>to take</AnswerB>
         <AnswerC>taking</AnswerC>
         <AnswerD>to be taken</AnswerD>
@@ -119,16 +119,16 @@
     </Item>
     <Item>
         <ID>14</ID>
-        <Question> My brother _________ in this school before he _______ for Hue last year.</Question>
+        <Question>My brother _______ in this school before he _____ for Hue last year.</Question>
         <AnswerA>taught/ had left</AnswerA>
-        <AnswerB> had taught/ left</AnswerB>
-        <AnswerC>taught/ had left </AnswerC>
+        <AnswerB>had taught/ left</AnswerB>
+        <AnswerC>taught/ had left</AnswerC>
         <AnswerD>teaches/ leaves</AnswerD>
         <Answer>B</Answer>
     </Item>
     <Item>
         <ID>15</ID>
-        <Question>The office staff decided _______ a retirement party for Mr. Green.</Question>
+        <Question>The office staff decided _____ a retirement party for Mr. Green.</Question>
         <AnswerA>having</AnswerA>
         <AnswerB>to have</AnswerB>
         <AnswerC>having had</AnswerC>
@@ -137,8 +137,8 @@
     </Item>
     <Item>
         <ID>16</ID>
-        <Question>Their professional relationship developed into a lasting ____.</Question>
-        <AnswerA>friendly  </AnswerA>
+        <Question>Their professional relationship developed into a lasting __.</Question>
+        <AnswerA>friendly</AnswerA>
         <AnswerB>friendliness</AnswerB>
         <AnswerC>friend</AnswerC>
         <AnswerD>friendship</AnswerD>
@@ -146,20 +146,275 @@
     </Item>
     <Item>
         <ID>17</ID>
-        <Question>Each year many people _________ take care of the old and disabled.</Question>
-        <AnswerA>volunteer </AnswerA>
+        <Question>Each year many people _______ take care of the old and disabled.</Question>
+        <AnswerA>volunteer</AnswerA>
         <AnswerB>voluntarily</AnswerB>
         <AnswerC>voluntary</AnswerC>
         <AnswerD>volunteering</AnswerD>
         <Answer>B</Answer>
-    </Item> <Item>
-    <ID>18</ID>
-    <Question>Parents should try to see things from a teenager’s _______.</Question>
-    <AnswerA>difference </AnswerA>
-    <AnswerB>choice</AnswerB>
-    <AnswerC>conflicts </AnswerC>
-    <AnswerD>viewpoint</AnswerD>
-    <Answer>D</Answer>
-</Item>
-
+    </Item>
+    <Item>
+        <ID>18</ID>
+        <Question>Parents should try to see things from a teenager’s _____.</Question>
+        <AnswerA>difference</AnswerA>
+        <AnswerB>choice</AnswerB>
+        <AnswerC>conflicts</AnswerC>
+        <AnswerD>viewpoint</AnswerD>
+        <Answer>D</Answer>
+        <ID>19</ID>
+        <Question>David left high school____ the age ____ seventeen.</Question>
+        <AnswerA>at/ of</AnswerA>
+        <AnswerB>in/for</AnswerB>
+        <AnswerC>on/ with</AnswerC>
+        <AnswerD>of/ in</AnswerD>
+        <Answer>A</Answer>
+        <ID>20</ID>
+        <Question>The lady________design had been chosen stepped to the platform to receive the
+            award.
+        </Question>
+        <AnswerA>whom</AnswerA>
+        <AnswerB>that</AnswerB>
+        <AnswerC>whose</AnswerC>
+        <AnswerD>which</AnswerD>
+        <Answer>C</Answer>
+        <ID>21</ID>
+        <Question>We_________here in 1993. We_________ here for a long time now.</Question>
+        <AnswerA>moved/ have been being</AnswerA>
+        <AnswerB>had moved/ are</AnswerB>
+        <AnswerC>moved/ have been</AnswerC>
+        <AnswerD>moved/ are being</AnswerD>
+        <Answer>C</Answer>
+        <ID>22</ID>
+        <Question>If you don’t try to study harder, you _______ the next exam.</Question>
+        <AnswerA>will pass</AnswerA>
+        <AnswerB>can’t fail</AnswerB>
+        <AnswerC>will fail</AnswerC>
+        <AnswerD>would fail</AnswerD>
+        <Answer>C</Answer>
+        <ID>23</ID>
+        <Question>Someone who is __ is hopeful about the future or the success of something in
+            particular.
+        </Question>
+        <AnswerA>pessimistic</AnswerA>
+        <AnswerB>pessimist</AnswerB>
+        <AnswerC>optimistic</AnswerC>
+        <AnswerD>optimist</AnswerD>
+        <Answer>C</Answer>
+        <ID>24</ID>
+        <Question>Education ____ to be the most important element to develop a country.</Question>
+        <AnswerA>often be considered</AnswerA>
+        <AnswerB>can often considered</AnswerB>
+        <AnswerC>can often be considered</AnswerC>
+        <AnswerD>can often consider</AnswerD>
+        <Answer>C</Answer>
+        <ID>25</ID>
+        <Question>On Fuly 20, 1969, Neil Armstrong became the first person __ foot another celestial
+            body.
+        </Question>
+        <AnswerA>set</AnswerA>
+        <AnswerB>who was set</AnswerB>
+        <AnswerC>setting</AnswerC>
+        <AnswerD>to set</AnswerD>
+        <Answer>D</Answer>
+        <ID>26</ID>
+        <Question>If it _______warm yesterday, we would have gone to the beach.</Question>
+        <AnswerA>were</AnswerA>
+        <AnswerB>had been</AnswerB>
+        <AnswerC>could be</AnswerC>
+        <AnswerD>was</AnswerD>
+        <Answer>B</Answer>
+        <ID>27</ID>
+        <Question>He has been very interested in doing research on _ since he was at high school.
+        </Question>
+        <AnswerA>biologist</AnswerA>
+        <AnswerB>biological</AnswerB>
+        <AnswerC>biology</AnswerC>
+        <AnswerD>biologically</AnswerD>
+        <Answer>C</Answer>
+        <ID>28</ID>
+        <Question>When she came home from school yesterday, her mother ____ in the kitchen.
+        </Question>
+        <AnswerA>cooked</AnswerA>
+        <AnswerB>was cooking</AnswerB>
+        <AnswerC>is cooking</AnswerC>
+        <AnswerD>cooks</AnswerD>
+        <Answer>B</Answer>
+        <ID>29</ID>
+        <Question>It is parents’ duty and responsibility to _________ hands to take care of their
+            children and give them a happy home.
+        </Question>
+        <AnswerA>give</AnswerA>
+        <AnswerB>hold</AnswerB>
+        <AnswerC>join</AnswerC>
+        <AnswerD>shake</AnswerD>
+        <Answer>C</Answer>
+        <ID>30</ID>
+        <Question>He is __ influenced by his father and grandfather. His behaviors and decisions are
+            exactly the same.
+        </Question>
+        <AnswerA>mighty</AnswerA>
+        <AnswerB>strongly</AnswerB>
+        <AnswerC>terribly</AnswerC>
+        <AnswerD>weakly</AnswerD>
+        <Answer>B</Answer>
+        <ID>31</ID>
+        <Question>We __ to the hospital to visit Mike when he __ to say that he was fine.</Question>
+        <AnswerA>were driving - was calling</AnswerA>
+        <AnswerB>drove - called</AnswerB>
+        <AnswerC>were driving – called</AnswerC>
+        <AnswerD>drove - was calling</AnswerD>
+        <Answer>C</Answer>
+        <ID>32</ID>
+        <Question>After a hard-working day, I went to __ bed and had __ most beautiful dream ever.
+        </Question>
+        <AnswerA>the - the</AnswerA>
+        <AnswerB>a – the</AnswerB>
+        <AnswerC>a – a</AnswerC>
+        <AnswerD>Ø – the</AnswerD>
+        <Answer>D</Answer>
+        <ID>33</ID>
+        <Question>Parents should try to see things from a teenager’s _____.</Question>
+        <AnswerA>difference</AnswerA>
+        <AnswerB>choice</AnswerB>
+        <AnswerC>conflicts</AnswerC>
+        <AnswerD>viewpoint</AnswerD>
+        <Answer>D</Answer>
+        <ID>34</ID>
+        <Question>“Shall we talk about Larry or Oprah?” - “___________”</Question>
+        <AnswerA>Never mind. There is always something to do.</AnswerA>
+        <AnswerB>We'd better talk about them both.</AnswerB>
+        <AnswerC>Wow! They are adorable.</AnswerC>
+        <AnswerD>Oh, I see what you mean.</AnswerD>
+        <Answer>B</Answer>
+        <ID>35</ID>
+        <Question>The monk insisted that the tourists __ the temple until they had removed their
+            shoes.
+        </Question>
+        <AnswerA>not enter</AnswerA>
+        <AnswerB>not entering</AnswerB>
+        <AnswerC>not to enter</AnswerC>
+        <AnswerD>to not enter</AnswerD>
+        <Answer>A</Answer>
+        <ID>36</ID>
+        <Question>They hope to __ a cure for the disease.</Question>
+        <AnswerA>catch up on</AnswerA>
+        <AnswerB>come up with</AnswerB>
+        <AnswerC>fill up with</AnswerC>
+        <AnswerD>go out with</AnswerD>
+        <Answer>B</Answer>
+        <ID>37</ID>
+        <Question>The map of top ten most densely __ countries in the world includes Monaco,
+            Singapore, Bahrain, Malta and Bangladesh.
+        </Question>
+        <AnswerA>populated</AnswerA>
+        <AnswerB>populating</AnswerB>
+        <AnswerC>population</AnswerC>
+        <AnswerD>popular</AnswerD>
+        <Answer>D</Answer>
+        <ID>38</ID>
+        <Question>The rate of urbanization is low, __ the rate of urban growth is high.</Question>
+        <AnswerA>but</AnswerA>
+        <AnswerB>however</AnswerB>
+        <AnswerC>so</AnswerC>
+        <AnswerD>therefore</AnswerD>
+        <Answer>A</Answer>
+        <ID>39</ID>
+        <Question>Anna organized a few games to __ the ice when the new students first arrived.
+        </Question>
+        <AnswerA>break</AnswerA>
+        <AnswerB>crack</AnswerB>
+        <AnswerC>drill</AnswerC>
+        <AnswerD>melt</AnswerD>
+        <Answer>A</Answer>
+        <ID>40</ID>
+        <Question>The council wants to __ the character of the city while reconstructing the Old
+            Quarter.
+        </Question>
+        <AnswerA>preserve</AnswerA>
+        <AnswerB>store</AnswerB>
+        <AnswerC>defense</AnswerC>
+        <AnswerD>abandon</AnswerD>
+        <Answer>A</Answer>
+        <ID>41</ID>
+        <Question>Switching to __ eco light bulb is one way to protect the environment.</Question>
+        <AnswerA>energy-wasting</AnswerA>
+        <AnswerB>energy-expending</AnswerB>
+        <AnswerC>energy-lacking</AnswerC>
+        <AnswerD>energy-saving</AnswerD>
+        <Answer>D</Answer>
+        <ID>42</ID>
+        <Question>After the children finished their dinner, they went to bed __ listened to a
+            bedtime story before falling asleep.
+        </Question>
+        <AnswerA>that</AnswerA>
+        <AnswerB>and</AnswerB>
+        <AnswerC>so</AnswerC>
+        <AnswerD>while</AnswerD>
+        <Answer>B</Answer>
+        <ID>43</ID>
+        <Question>I __ out last night but at the last minute I __ that I had a quiz this morning.
+        </Question>
+        <AnswerA>was going to go – realized</AnswerA>
+        <AnswerB>went – realized</AnswerB>
+        <AnswerC>had gone – would realize</AnswerC>
+        <AnswerD>would go - have realized</AnswerD>
+        <Answer>A</Answer>
+        <ID>44</ID>
+        <Question>“I am so happy. I have just passed my history exam.” - “______________”</Question>
+        <AnswerA>Congratulations!t</AnswerA>
+        <AnswerB>What's the matter?</AnswerB>
+        <AnswerC>Get well soon!</AnswerC>
+        <AnswerD>Thanks a lot.</AnswerD>
+        <Answer>A</Answer>
+        <ID>45</ID>
+        <Question>The UK is considering the proposal that it __ compensations for damages of the
+            Indian embassy.
+        </Question>
+        <AnswerA>been paying</AnswerA>
+        <AnswerB>is paying</AnswerB>
+        <AnswerC>paid</AnswerC>
+        <AnswerD>pay</AnswerD>
+        <Answer>D</Answer>
+        <ID>46</ID>
+        <Question>The teacher explained so much stuff in just one lesson that most of the students
+            could _____ only half of it.
+        </Question>
+        <AnswerA>break up</AnswerA>
+        <AnswerB>get through</AnswerB>
+        <AnswerC>let out</AnswerC>
+        <AnswerD>take in</AnswerD>
+        <Answer>D</Answer>
+        <ID>47</ID>
+        <Question>Although it was more than an hour late, the superstar finally showed up and __ the
+            attention of the audience.
+        </Question>
+        <AnswerA>grabbed</AnswerA>
+        <AnswerB>held</AnswerB>
+        <AnswerC>paid</AnswerC>
+        <AnswerD>took</AnswerD>
+        <Answer>B</Answer>
+        <ID>48</ID>
+        <Question>_____ batteries or solar chargers are some of the solutions to the lack of
+            energy.
+        </Question>
+        <AnswerA>Rechargeable</AnswerA>
+        <AnswerB>Reversible</AnswerB>
+        <AnswerC>Repeatable</AnswerC>
+        <AnswerD>Returnable</AnswerD>
+        <Answer>A</Answer>
+        <ID>49</ID>
+        <Question>The kids show some hatred towards him __ he was really nice to them.</Question>
+        <AnswerA>because</AnswerA>
+        <AnswerB>before</AnswerB>
+        <AnswerC>unless</AnswerC>
+        <AnswerD>even though</AnswerD>
+        <Answer>D</Answer>
+        <ID>50</ID>
+        <Question>We can leave __ you are ready.</Question>
+        <AnswerA>whatever</AnswerA>
+        <AnswerB>whoever</AnswerB>
+        <AnswerC>whenever</AnswerC>
+        <AnswerD>whichever</AnswerD>
+        <Answer>C</Answer>
+    </Item>
 </Questionare>

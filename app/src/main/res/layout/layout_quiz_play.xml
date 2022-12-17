@@ -118,6 +118,7 @@
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textSize="22dp" />
+
         </LinearLayout>
 
         <TextView
@@ -130,6 +131,16 @@
             android:id="@+id/txt_ketqua"
             android:textStyle="normal"
             android:textColor="@color/black" />
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_green_radius_100"
+            android:text="123"
+            android:id="@+id/btn_1"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="22dp" />
     </LinearLayout>
+
 
 </LinearLayout>

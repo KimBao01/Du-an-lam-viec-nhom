@@ -51,8 +51,10 @@ class QuestionNare {
 
 public class Activity_quiz_play extends Activity {
     //    Activity_quiz_chooseQuestion Au = new Activity_quiz_chooseQuestion() ;
+    Random random;
+    boolean IsHelp = false;
     int AA = 0;
-    private Button btn;
+    Button btn, BtnHelp;
     TextView Cauhoi, Ketqua;
     RadioGroup RG;
     Button BT;
@@ -77,6 +79,7 @@ public class Activity_quiz_play extends Activity {
     int HighScore = 0;
     int High1 = 0, High2 = 0, High3 = 0, High4 = 0, High5 = 0;
     int total_Time = 0;
+    int value = 0;
     private static final String FILE_NAME = "rankUpdateQuiz.txt";
 
     @Override
@@ -87,10 +90,11 @@ public class Activity_quiz_play extends Activity {
         AA = packageFromCaller.getInt("SL1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_quiz_play);
-        Media_False_Answer =  MediaPlayer.create(Activity_quiz_play.this,R.raw.doulingo_wrong_answer);
-        Media_Correct_Answer = MediaPlayer.create(Activity_quiz_play.this,R.raw.duolingo_true_anwser);
-        Media_Lose = MediaPlayer.create(Activity_quiz_play.this,R.raw.doulingo_lose);
-        Media_Win = MediaPlayer.create(Activity_quiz_play.this,R.raw.doulingo_win);
+        BtnHelp = (Button) findViewById(R.id.btn_1);
+        Media_False_Answer = MediaPlayer.create(Activity_quiz_play.this, R.raw.doulingo_wrong_answer);
+        Media_Correct_Answer = MediaPlayer.create(Activity_quiz_play.this, R.raw.duolingo_true_anwser);
+        Media_Lose = MediaPlayer.create(Activity_quiz_play.this, R.raw.doulingo_lose);
+        Media_Win = MediaPlayer.create(Activity_quiz_play.this, R.raw.doulingo_win);
         MemberList = new ArrayList<>();
         Cauhoi = (TextView) findViewById(R.id.txtCauhoi);
         Ketqua = (TextView) findViewById(R.id.txt_ketqua);
@@ -103,13 +107,111 @@ public class Activity_quiz_play extends Activity {
         C = (RadioButton) findViewById(R.id.rb3);
         D = (RadioButton) findViewById(R.id.rb4);
         textColorDefaultCd = textViewCountDown.getTextColors();
+        random = new Random();
         timeLeftInMillis = COUNTDOWN_IN_MILLIS;
         startCountDown();
         editscore();
         LoadHighScore();
         ReadData();
         Display(pos);
+        BtnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (IsHelp == false) {
+                    if (L.get(pos).Answer.compareTo("A") == 0) {
+                        do {
+                            value = random.nextInt(4);
+                            Log.e(" "+value,"A");
+                            switch (value) {
+                                case 1:
+                                    C.setVisibility(View.INVISIBLE);
+                                    D.setVisibility(View.INVISIBLE);
+                                    break;
+                                case 2:
+                                    B.setVisibility(View.INVISIBLE);
+                                    D.setVisibility(View.INVISIBLE);
+                                    break;
+                                case 3:
+                                    B.setVisibility(View.INVISIBLE);
+                                    C.setVisibility(View.INVISIBLE);
+                                    break;
+                            }
+                        }while(value == 0);
+                    }
+                    if (L.get(pos).Answer.compareTo("B") == 0) {
+                        do {
+                            value = random.nextInt(4);
+                            Log.e(" "+value,"B");
+                            switch (value) {
+                                case 0:
+                                    C.setVisibility(View.INVISIBLE);
+                                    D.setVisibility(View.INVISIBLE);
 
+                                    break;
+                                case 2:
+                                    A.setVisibility(View.INVISIBLE);
+                                    D.setVisibility(View.INVISIBLE);
+
+                                    break;
+                                case 3:
+                                    A.setVisibility(View.INVISIBLE);
+                                    C.setVisibility(View.INVISIBLE);
+
+                                    break;
+                            }
+                        }while(value == 1);
+                    }
+                    if (L.get(pos).Answer.compareTo("C") == 0) {
+                        do {
+                            value = random.nextInt(4);
+                            Log.e(" "+value,"C");
+                            switch (value) {
+                                case 0:
+                                    B.setVisibility(View.INVISIBLE);
+                                    D.setVisibility(View.INVISIBLE);
+
+                                    break;
+                                case 1:
+                                    A.setVisibility(View.INVISIBLE);
+                                    D.setVisibility(View.INVISIBLE);
+
+                                    break;
+                                case 3:
+                                    A.setVisibility(View.INVISIBLE);
+                                    B.setVisibility(View.INVISIBLE);
+
+                                    break;
+                            }
+                        }while(value == 2);
+                    }
+                    if (L.get(pos).Answer.compareTo("D") == 0) {
+                        do {
+                            value = random.nextInt(4);
+                            Log.e(" "+value,"D");
+                            switch (value) {
+                                case 0:
+                                    B.setVisibility(View.INVISIBLE);
+                                    C.setVisibility(View.INVISIBLE);
+
+                                    break;
+                                case 1:
+                                    A.setVisibility(View.INVISIBLE);
+                                    C.setVisibility(View.INVISIBLE);
+
+                                    break;
+                                case 2:
+                                    A.setVisibility(View.INVISIBLE);
+                                    B.setVisibility(View.INVISIBLE);
+
+                                    break;
+                            }
+                        }while(value == 3);
+                    }
+                    IsHelp = true;
+                    BtnHelp.setVisibility(View.GONE);
+                }
+            }
+        });
         BT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,9 +226,7 @@ public class Activity_quiz_play extends Activity {
                         if (L.get(pos).Answer.compareTo("A") == 0) {
                             score = score + 1;
                             Media_Correct_Answer.start();
-                        }
-                        else
-                        {
+                        } else {
                             Media_False_Answer.start();
                         }
                         a = true;
@@ -135,20 +235,16 @@ public class Activity_quiz_play extends Activity {
                         if (L.get(pos).Answer.compareTo("B") == 0) {
                             score = score + 1;
                             Media_Correct_Answer.start();
-                        }
-                        else
-                        {
+                        } else {
                             Media_False_Answer.start();
                         }
                         a = true;
                         break;
                     case R.id.rb3:
-                        if (L.get(pos).Answer.compareTo("C") == 0){
+                        if (L.get(pos).Answer.compareTo("C") == 0) {
                             score = score + 1;
                             Media_Correct_Answer.start();
-                        }
-                        else
-                        {
+                        } else {
                             Media_False_Answer.start();
                         }
                         a = true;
@@ -157,9 +253,7 @@ public class Activity_quiz_play extends Activity {
                         if (L.get(pos).Answer.compareTo("D") == 0) {
                             score = score + 1;
                             Media_Correct_Answer.start();
-                        }
-                        else
-                        {
+                        } else {
                             Media_False_Answer.start();
                         }
                         a = true;
@@ -172,12 +266,10 @@ public class Activity_quiz_play extends Activity {
                     startCountDown();
 
                     if (pos >= L.size()) {
-                        if(Media_Correct_Answer.isPlaying())
-                        {
+                        if (Media_Correct_Answer.isPlaying()) {
                             Media_Correct_Answer.stop();
                         }
-                        if(Media_False_Answer.isPlaying())
-                        {
+                        if (Media_False_Answer.isPlaying()) {
                             Media_False_Answer.stop();
                         }
                         Media_Win.start();
@@ -215,12 +307,10 @@ public class Activity_quiz_play extends Activity {
                 startCountDown();
 
                 if (pos >= L.size()) {
-                    if(Media_Correct_Answer.isPlaying())
-                    {
+                    if (Media_Correct_Answer.isPlaying()) {
                         Media_Correct_Answer.stop();
                     }
-                    if(Media_False_Answer.isPlaying())
-                    {
+                    if (Media_False_Answer.isPlaying()) {
                         Media_False_Answer.stop();
                     }
                     Media_Win.start();
@@ -291,8 +381,7 @@ public class Activity_quiz_play extends Activity {
 
             @Override
             public void onFinish() {
-                if(Media_Correct_Answer.isPlaying())
-                {
+                if (Media_Correct_Answer.isPlaying()) {
                     Media_Correct_Answer.stop();
                 }
                 Media_False_Answer.start();
@@ -300,12 +389,10 @@ public class Activity_quiz_play extends Activity {
 //                Toast.makeText(Activity_quiz_play.this, "Het gio", Toast.LENGTH_SHORT).show();
                 pos++;
                 if (pos >= L.size()) {
-                    if(Media_Correct_Answer.isPlaying())
-                    {
+                    if (Media_Correct_Answer.isPlaying()) {
                         Media_Correct_Answer.stop();
                     }
-                    if(Media_False_Answer.isPlaying())
-                    {
+                    if (Media_False_Answer.isPlaying()) {
                         Media_False_Answer.stop();
                     }
                     Media_Win.start();
@@ -331,7 +418,7 @@ public class Activity_quiz_play extends Activity {
         int count = 0;
         count++;
         total_Time += count;
-        Log.e("Count", "" + total_Time);
+//        Log.e("Count", "" + total_Time);
         int minutes = (int) (timeLeftInMillis / 1000) / 60;
         int seconds = (int) (timeLeftInMillis / 1000) % 60;
 
@@ -353,7 +440,10 @@ public class Activity_quiz_play extends Activity {
     }
 
     void Display(int i) {
-
+        A.setVisibility(View.VISIBLE);
+        B.setVisibility(View.VISIBLE);
+        C.setVisibility(View.VISIBLE);
+        D.setVisibility(View.VISIBLE);
         Cauhoi.setText(L.get(i).Q);
         A.setText(L.get(i).AnswerA);
         B.setText(L.get(i).AnswerB);
