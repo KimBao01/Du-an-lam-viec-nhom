@@ -435,8 +435,10 @@ public class Activity_correct_play extends AppCompatActivity {
 //                Log.e("5","6");
                 finish();
                 Count_Down_Timer.cancel();
-                Media_Correct_Answer.stop();
-                Media_Correct_Answer.release();
+                if(Media_Correct_Answer.isPlaying())
+                {
+                    Media_Correct_Answer.stop();
+                }
                 Media_Win.start();
                 Intent intent = new Intent(this, Activity_result_Correct.class);
                 Bundle bundle = new Bundle();
@@ -521,8 +523,10 @@ public class Activity_correct_play extends AppCompatActivity {
                         break;
                     } else if (Arr_MaintainAnswer.get(posIndex) == -1) {
                         if (txtCounterStar.getText().toString().equals("0")) {
-
-//                            Log.e("3","4");
+                            if(Media_False_Answer.isPlaying())
+                            {
+                                Media_False_Answer.stop();
+                            }
                             page = true;
                             Count_Down_Timer.cancel();
                             finish();
