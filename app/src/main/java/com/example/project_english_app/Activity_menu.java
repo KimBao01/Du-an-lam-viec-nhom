@@ -7,9 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Activity_menu extends AppCompatActivity {
-    private Button btnQuiz, btnCorrect, btnLogout;
+    private ImageButton btnQuiz, btnCorrect, btnLogout;
 
 
     @SuppressLint("MissingInflatedId")
@@ -19,7 +20,7 @@ public class Activity_menu extends AppCompatActivity {
         setContentView(R.layout.layout_menu);
 
 
-        btnLogout = (Button) findViewById(R.id.btn_logout);
+        btnLogout = (ImageButton) findViewById(R.id.btn_logout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,7 +28,7 @@ public class Activity_menu extends AppCompatActivity {
             }
         });
 
-        btnQuiz = (Button) findViewById(R.id.btn_Quiz);
+        btnQuiz = (ImageButton) findViewById(R.id.btn_Quiz);
         btnQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +36,7 @@ public class Activity_menu extends AppCompatActivity {
             }
         });
 
-        btnCorrect = (Button) findViewById(R.id.btn_Correct);
+        btnCorrect = (ImageButton) findViewById(R.id.btn_Correct);
         btnCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

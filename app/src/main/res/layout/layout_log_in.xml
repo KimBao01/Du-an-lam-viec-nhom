@@ -85,19 +85,5 @@
         android:textAlignment="center"
         android:id="@+id/registerPage"
         android:textColor="#29BF12"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="━━━━━━━━  or  ━━━━━━━━"
-        android:textSize="18sp"
-        android:textStyle="italic"
-        android:textAlignment="center"
-        android:textColor="#888787"/>
-    <Button
-        android:id="@+id/signInGG"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:background="@drawable/signin_gg"/>
 
 </LinearLayout>

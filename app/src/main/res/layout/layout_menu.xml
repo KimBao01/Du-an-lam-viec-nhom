@@ -1,107 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#F4FDF4"
+    android:background="@drawable/background_main_theme"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
+    <ImageButton
+        android:id="@+id/btn_logout"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:background="@drawable/exit"/>
+    <TextView
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center"
+        android:id="@+id/title_topic"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center">
-        <Button
-            android:gravity="right"
-            android:id="@+id/btn_logout"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/logout_icon"/>
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Let's Choose Topic"
+        android:textColor="#fff"
+        android:textSize="36sp"
+        android:textStyle="bold"/>
 
-        <RelativeLayout
-            android:layout_marginRight="30dp"
-            android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_marginTop="200dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_topic"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/round_back_white_custom"
+            android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/btn_Quiz"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/eng_logo_quiz"/>
             <TextView
-                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="35dp"
-                android:fontFamily="@font/ravenpro_medium"
-                android:text="WELCOME TO"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-                android:textColor="#6ADF31"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+                android:layout_marginTop="8dp"
+                android:text="Quiz"
+                android:textColor="#75C700"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/round_back_white_custom"
+            android:orientation="vertical">
 
+            <ImageButton
+                android:id="@+id/btn_Correct"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/eng_logo_correct_word"/>
             <TextView
-                android:id="@+id/textView2"
+                android:textAlignment="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textView1"
-                android:fontFamily="@font/ravenpro_medium"
-                android:text="LEARNING ENGLISH"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-                android:textColor="#6ADF31"
-                android:textSize="30dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
+                android:layout_marginTop="8dp"
+                android:text="Correct Word"
+                android:textColor="#75C700"
+                android:textSize="23sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
     </LinearLayout>
 
 
 
-
-
-    <ImageView
-        android:layout_marginTop="20dp"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/eng_logo_home"
-        android:layout_gravity="center"
-        />
-    <TextView
-        android:id="@+id/chooseTopic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="20dp"
-        android:text="Choose Mode"
-        android:fontFamily="@font/ravenpro_bold"
-        android:textSize="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_gravity="center"
-        android:textColor="#29BF12"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btn_Quiz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_eng_quiz_menu" />
-
-        <Button
-            android:id="@+id/btn_Correct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/btn_Quiz"
-            android:background="@drawable/btn_eng_correct_menu"
-            android:layout_marginLeft="20dp"/>
-    </RelativeLayout>
-
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     {
         imageView = findViewById(R.id.img_showApp);
         textView1 = findViewById(R.id.textView_showApp);
-        signin = findViewById(R.id.signInGG);
+//        signin = findViewById(R.id.signInGG);
     }
 //    @Override
 //    public void onActivityResult(int requestCode, int resultCode, Intent data) {
