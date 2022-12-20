@@ -4,6 +4,6 @@
     <font
         android:fontStyle="normal"
         android:fontWeight="400"
-        android:font="@font/kgredhands"
+        android:font="@font/ravenpro_black"
         />
 </font-family>
