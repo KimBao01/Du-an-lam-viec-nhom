@@ -6,7 +6,7 @@
 
     <TextView
         android:textStyle="bold"
-        android:textColor="#6ADF31"
+        android:textColor="#75C700"
         android:textAllCaps="true"
         android:textSize="38dp"
         android:layout_marginTop="30dp"
@@ -33,7 +33,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center|bottom">
 
 
@@ -48,13 +48,14 @@
             android:text="BACK TO MENU" />
 
         <Button
+            android:layout_marginBottom="10dp"
             android:id="@+id/btn_nextOneItem"
             android:layout_marginLeft="30dp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_back"
-            android:backgroundTint="#75C700"
-            android:textColor="#ffffff"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/icon_cup"
+
+        />
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
 <!--<Button-->
