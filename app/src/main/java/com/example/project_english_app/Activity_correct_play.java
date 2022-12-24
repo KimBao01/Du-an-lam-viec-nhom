@@ -67,6 +67,7 @@ public class Activity_correct_play extends AppCompatActivity {
     MediaPlayer Media_Win;
     MediaPlayer Media_Lose;
     MediaPlayer Media_False_Answer;
+    MediaPlayer Media_Click_Word;
 
 
     @SuppressLint("MissingInflatedId")
@@ -79,11 +80,13 @@ public class Activity_correct_play extends AppCompatActivity {
         System.gc();
 //        CountDown();
         GvChuCai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 view.setVisibility(View.INVISIBLE);
                 FullChuCai += ChuCai.get(i).getChuCai();
                 txtAnswer.setText(FullChuCai);
+
             }
         });
         btnSkip.setOnClickListener(new View.OnClickListener() {
@@ -163,10 +166,12 @@ public class Activity_correct_play extends AppCompatActivity {
 
 
     public void AnhXa() {
-        Media_False_Answer =  MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_wrong_answer);
-        Media_Correct_Answer = MediaPlayer.create(Activity_correct_play.this,R.raw.duolingo_true_anwser);
-        Media_Lose = MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_lose);
-        Media_Win = MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_win);
+        Media_False_Answer = MediaPlayer.create(Activity_correct_play.this, R.raw.doulingo_wrong_answer);
+        Media_Correct_Answer = MediaPlayer.create(Activity_correct_play.this, R.raw.duolingo_true_anwser);
+        Media_Lose = MediaPlayer.create(Activity_correct_play.this, R.raw.doulingo_lose);
+        Media_Win = MediaPlayer.create(Activity_correct_play.this, R.raw.doulingo_win);
+        Media_Click_Word = MediaPlayer.create(Activity_correct_play.this, R.raw.sound_effect_btn);
+
         total_Time = 0;
         MemberList = new ArrayList<>();
         txtCorrectAnswer = (TextView) findViewById(R.id.CorrectAnswer);
@@ -435,8 +440,7 @@ public class Activity_correct_play extends AppCompatActivity {
 //                Log.e("5","6");
                 finish();
                 Count_Down_Timer.cancel();
-                if(Media_Correct_Answer.isPlaying())
-                {
+                if (Media_Correct_Answer.isPlaying()) {
                     Media_Correct_Answer.stop();
                 }
                 Media_Win.start();
@@ -523,8 +527,7 @@ public class Activity_correct_play extends AppCompatActivity {
                         break;
                     } else if (Arr_MaintainAnswer.get(posIndex) == -1) {
                         if (txtCounterStar.getText().toString().equals("0")) {
-                            if(Media_False_Answer.isPlaying())
-                            {
+                            if (Media_False_Answer.isPlaying()) {
                                 Media_False_Answer.stop();
                             }
                             page = true;

@@ -1,6 +1,7 @@
 package com.example.project_english_app;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ public class ChuCai_Adapter extends BaseAdapter {
     ArrayList<ChuCai_CorrectWord> ChuCaiList;
     Context context;
     int layout;
+    MediaPlayer Media_Click_Word = null;
 
     public ChuCai_Adapter(ArrayList<ChuCai_CorrectWord> ChuCaiList, Context context, int layout) {
         this.ChuCaiList = ChuCaiList;
@@ -36,24 +38,23 @@ public class ChuCai_Adapter extends BaseAdapter {
     public long getItemId(int i) {
         return 0;
     }
-    private  class ViewHolder{
+
+    private class ViewHolder {
         TextView ChuCai;
 
     }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         ViewHolder holder;
-        if(view == null)
-        {
+        if (view == null) {
             holder = new ViewHolder();
-            LayoutInflater inflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(layout,null);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(layout, null);
             holder.ChuCai = (TextView) view.findViewById(R.id.textCorrect);
             view.setTag(holder);
-        }
-        else
-        {
+        } else {
             holder = (ViewHolder) view.getTag();
         }
 
@@ -63,10 +64,8 @@ public class ChuCai_Adapter extends BaseAdapter {
 //        view.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                if(view.getVisibility()== View.VISIBLE)
-//                {
-//                    view.setVisibility(View.INVISIBLE);
-//                }
+//                Media_Click_Word = MediaPlayer.create(context, R.raw.sound_effect_btn);
+//                Media_Click_Word.start();
 //            }
 //        });
         return view;
