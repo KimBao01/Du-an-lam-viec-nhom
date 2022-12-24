@@ -163,10 +163,10 @@ public class Activity_correct_play extends AppCompatActivity {
 
 
     public void AnhXa() {
-        Media_False_Answer =  MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_wrong_answer);
-        Media_Correct_Answer = MediaPlayer.create(Activity_correct_play.this,R.raw.duolingo_true_anwser);
-        Media_Lose = MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_lose);
-        Media_Win = MediaPlayer.create(Activity_correct_play.this,R.raw.doulingo_win);
+        Media_False_Answer = MediaPlayer.create(Activity_correct_play.this, R.raw.doulingo_wrong_answer);
+        Media_Correct_Answer = MediaPlayer.create(Activity_correct_play.this, R.raw.duolingo_true_anwser);
+        Media_Lose = MediaPlayer.create(Activity_correct_play.this, R.raw.doulingo_lose);
+        Media_Win = MediaPlayer.create(Activity_correct_play.this, R.raw.doulingo_win);
         total_Time = 0;
         MemberList = new ArrayList<>();
         txtCorrectAnswer = (TextView) findViewById(R.id.CorrectAnswer);
@@ -435,8 +435,7 @@ public class Activity_correct_play extends AppCompatActivity {
 //                Log.e("5","6");
                 finish();
                 Count_Down_Timer.cancel();
-                if(Media_Correct_Answer.isPlaying())
-                {
+                if (Media_Correct_Answer.isPlaying()) {
                     Media_Correct_Answer.stop();
                 }
                 Media_Win.start();
@@ -523,8 +522,7 @@ public class Activity_correct_play extends AppCompatActivity {
                         break;
                     } else if (Arr_MaintainAnswer.get(posIndex) == -1) {
                         if (txtCounterStar.getText().toString().equals("0")) {
-                            if(Media_False_Answer.isPlaying())
-                            {
+                            if (Media_False_Answer.isPlaying()) {
                                 Media_False_Answer.stop();
                             }
                             page = true;

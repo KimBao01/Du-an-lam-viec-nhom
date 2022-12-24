@@ -44,7 +44,7 @@ public class Activity_Register extends AppCompatActivity {
         Btn_Res.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log_in_User();
+                DangKy();
 
             }
         });
@@ -70,7 +70,7 @@ public class Activity_Register extends AppCompatActivity {
         Intent intent = new Intent(this, Activity_LogIn.class);
         startActivity(intent);
     }
-    void Log_in_User()
+    void DangKy()
     {
         String email = Res_Email.getText().toString().trim();
         String pass = Res_Pass.getText().toString().trim();
