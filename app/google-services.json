@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "356646928562",
-    "project_id": "doulingoclone-3df34",
-    "storage_bucket": "doulingoclone-3df34.appspot.com"
+    "project_number": "564771472980",
+    "project_id": "apphsu-1d420",
+    "storage_bucket": "apphsu-1d420.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:356646928562:android:461d7c0e2db39ab44649ab",
+        "mobilesdk_app_id": "1:564771472980:android:4d27c25d4b79a24b490fc1",
         "android_client_info": {
           "package_name": "com.example.project_english_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "356646928562-u3d21ejv8o2565o13u3dgk35fkmmddre.apps.googleusercontent.com",
+          "client_id": "564771472980-u2t3odaaa0einlc92f8u8si6t5e7lqat.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.project_english_app",
-            "certificate_hash": "86130cfb3da54066dfdd645aead207122bae7e0e"
+            "certificate_hash": "04dd37b5b26e8211508b68290baa07806e8a7158"
           }
         },
         {
-          "client_id": "356646928562-nn9ijp56bje0bllfftic50ccv185vdgj.apps.googleusercontent.com",
+          "client_id": "564771472980-j5q4vp5oa7n786lju5tt2mmqs7471qu7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDAH_7IyLjCQtTLcINxVLdaY_ciCNBKQP4"
+          "current_key": "AIzaSyBT6Ke3l3oMUpAAoBRMHNfxZYtRkS3azbM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "356646928562-nn9ijp56bje0bllfftic50ccv185vdgj.apps.googleusercontent.com",
+              "client_id": "564771472980-j5q4vp5oa7n786lju5tt2mmqs7471qu7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
